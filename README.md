@@ -100,6 +100,16 @@ only), images scale, links sweep an accent underline.
   scroll events in hidden/background tabs, so an automated check against a headless or
   backgrounded pane will report the animations as dead when they are fine.
 
+## Test URL
+
+**https://sgx1992.github.io/fastforward-site/** — GitHub Pages, served from the `main`
+branch of `github.com/SGX1992/fastforward-site` (public repo; free-plan Pages requires it).
+HTTPS is enforced. Push to `main` and it redeploys in about a minute.
+
+This is a staging URL for sharing, not the launch: the production plan is still to point
+`fastforward.global` at a host (see the GoDaddy notes) — GitHub Pages works for that too
+via a `CNAME` file, if you'd rather not add Netlify.
+
 ## The showreel
 
 `assets/video/hero.mp4` — **already in the repo, nothing to place.** It was pulled from the
