@@ -497,17 +497,35 @@
     });
   }
 
-  /* ---------- video: play only while on screen ---------- */
+  /* ---------- video: play while on screen; never leave it dead ----------
+     Two failure modes are handled explicitly:
+     - prefers-reduced-motion: we do not autoplay, but the showreel must still be
+       watchable, so native controls are shown instead of skipping it entirely.
+     - play() rejected (autoplay policy, Low Power Mode, battery saver): fall back
+       to native controls so a tap can start it. A poster that can never play is
+       a broken section, not a graceful degradation. */
   var clips = [].slice.call(document.querySelectorAll('.reel__video, .tile video'));
-  if (clips.length && !reduce && 'IntersectionObserver' in window) {
-    var clipIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        var el = en.target;
-        if (en.isIntersecting) { var pr = el.play(); if (pr && pr.catch) pr.catch(function(){}); }
-        else if (!el.paused) el.pause();
+  function showControls(v){ if (!v.controls) { v.controls = true; v.classList.add('has-controls'); } }
+  if (clips.length) {
+    if (reduce || !('IntersectionObserver' in window)) {
+      clips.forEach(showControls);
+    } else {
+      var clipIO = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          var el = en.target;
+          if (en.isIntersecting) {
+            var pr = el.play();
+            if (pr && pr.catch) pr.catch(function(){ showControls(el); });
+          } else if (!el.paused) {
+            el.pause();
+          }
+        });
+      }, {threshold:0.25});
+      clips.forEach(function(el){
+        el.addEventListener('error', function(){ showControls(el); });   // bad source: at least expose it
+        clipIO.observe(el);
       });
-    }, {threshold:0.25});
-    clips.forEach(function(el){ clipIO.observe(el); });
+    }
   }
 
   /* ---------- scroll: progress + parallax, one rAF loop ---------- */
