@@ -739,29 +739,3 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
   h2.is-split .w,.stance__lead.is-split .w{opacity:1 !important;transform:none !important}
   .btn,.nav__cta{transform:none !important}
 }
-
-
-/* ============================================================
-   FAIL-OPEN SAFETY FUSES
-   Every scroll-triggered reveal above hides content until an
-   IntersectionObserver adds .is-in. That must never be the only way
-   content becomes visible: if the observer does not fire for any
-   reason, these zero-duration, delayed animations force the final
-   state. They and the .is-in rules share the same end values, so the
-   normal path is unaffected; motion is simply guaranteed to end.
-   ============================================================ */
-@keyframes fuse-show{to{opacity:1;transform:none}}
-@keyframes fuse-unclip{to{clip-path:inset(0 0 0 0)}}
-@keyframes fuse-lift{to{transform:translateY(-101%)}}
-
-/* the showreel curtain lifts by itself 3s after load if nothing else lifts it */
-.reel__frame::after{animation:fuse-lift 0s linear 3s forwards}
-.reel__frame.is-in::after{animation:none}
-
-/* everything else: visible by 7s after load at the latest */
-[data-rv]{animation:fuse-show 0s linear 7s forwards}
-.tile{animation:fuse-unclip 0s linear 7s forwards}
-.tile img,.tile video{animation:fuse-show 0s linear 7s forwards}
-.cities li,h2.is-split .w,.stance__lead.is-split .w{animation:fuse-show 0s linear 7s forwards}
-.tile.is-in,.tile.is-in img,.tile.is-in video,[data-rv].is-in,.cities.is-in li,
-h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{animation:none}

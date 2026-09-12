@@ -18,7 +18,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=32">
+<link rel="stylesheet" href="assets/css/style.css?v=33">
+<noscript><style>
+  /* without JS nothing can add .is-in — so nothing may start hidden */
+  .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
+  .reel__frame::after{display:none !important}.reel__play{display:none}
+</style></noscript>
 </head>
 <body>
 
@@ -384,6 +389,20 @@
 
 <script>
 (function(){
+  /* ---------- FAIL-OPEN FUSE — registered before anything else can throw ----------
+     Every reveal below waits for an IntersectionObserver to add .is-in. That must
+     never be the only way content appears. These timers add the same class the
+     observer would, so the CSS path is identical; motion is simply guaranteed to
+     end. setTimeout keeps running even where rAF and CSS animations are throttled. */
+  function fuse(sel, ms){
+    setTimeout(function(){
+      var els = document.querySelectorAll(sel);
+      for (var i = 0; i < els.length; i++) els[i].classList.add('is-in');
+    }, ms);
+  }
+  fuse('.reel__frame', 3000);                                    // the showreel curtain
+  fuse('[data-rv], .tile, .metrics, .cities, .reel__frame', 9000); // everything else
+
   var root   = document.documentElement;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var fine   = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
