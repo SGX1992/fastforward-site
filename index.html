@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=30">
+<link rel="stylesheet" href="assets/css/style.css?v=31">
 </head>
 <body>
 
@@ -164,10 +164,19 @@
       <div class="eyebrow">In practice</div>
     </div>
     <figure class="reel__frame">
+      <!-- The poster is a real <img> underneath the video, so the frame is never
+           empty even if the video element fails to paint (WebKit + clip-path was
+           one such case). The button appears whenever the clip is not playing and
+           starts it with a user gesture, which every browser allows. -->
+      <img class="reel__poster" src="assets/img/hero-poster.jpg" alt="" aria-hidden="true">
       <video class="reel__video" muted loop playsinline preload="metadata"
              poster="assets/img/hero-poster.jpg">
         <source src="assets/video/hero.mp4" type="video/mp4">
       </video>
+      <button class="reel__play" type="button" aria-label="Play showreel">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <span>Play showreel</span>
+      </button>
     </figure>
   </div>
 </section>
@@ -502,34 +511,30 @@
   }
 
   /* ---------- video: play while on screen; never leave it dead ----------
-     Two failure modes are handled explicitly:
-     - prefers-reduced-motion: we do not autoplay, but the showreel must still be
-       watchable, so native controls are shown instead of skipping it entirely.
-     - play() rejected (autoplay policy, Low Power Mode, battery saver): fall back
-       to native controls so a tap can start it. A poster that can never play is
-       a broken section, not a graceful degradation. */
+     State is driven by the media events themselves, not by our intent:
+     .is-playing on the frame only while the clip is genuinely playing. Anything
+     else (autoplay refused, reduced motion, an error, a pause) shows the poster
+     and a play button, which starts playback from a user gesture. */
   var clips = [].slice.call(document.querySelectorAll('.reel__video, .tile video'));
-  function showControls(v){ if (!v.controls) { v.controls = true; v.classList.add('has-controls'); } }
-  if (clips.length) {
-    if (reduce || !('IntersectionObserver' in window)) {
-      clips.forEach(showControls);
-    } else {
-      var clipIO = new IntersectionObserver(function(entries){
-        entries.forEach(function(en){
-          var el = en.target;
-          if (en.isIntersecting) {
-            var pr = el.play();
-            if (pr && pr.catch) pr.catch(function(){ showControls(el); });
-          } else if (!el.paused) {
-            el.pause();
-          }
-        });
-      }, {threshold:0.25});
-      clips.forEach(function(el){
-        el.addEventListener('error', function(){ showControls(el); });   // bad source: at least expose it
-        clipIO.observe(el);
+  function frameOf(v){ return v.closest('.reel__frame, .tile') || v.parentNode; }
+  function tryPlay(v){ var pr = v.play(); if (pr && pr.catch) pr.catch(function(){}); }
+  clips.forEach(function(v){
+    var f = frameOf(v);
+    v.addEventListener('playing', function(){ f.classList.add('is-playing'); });
+    ['pause','ended','error','stalled','emptied'].forEach(function(ev){
+      v.addEventListener(ev, function(){ if (v.paused || v.error) f.classList.remove('is-playing'); });
+    });
+    var btn = f.querySelector('.reel__play');
+    if (btn) btn.addEventListener('click', function(){ v.muted = true; tryPlay(v); });
+  });
+  if (clips.length && !reduce && 'IntersectionObserver' in window) {
+    var clipIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        var el = en.target;
+        if (en.isIntersecting) tryPlay(el); else if (!el.paused) el.pause();
       });
-    }
+    }, {threshold:0.25});
+    clips.forEach(function(el){ clipIO.observe(el); });
   }
 
   /* ---------- scroll: progress + parallax, one rAF loop ---------- */
