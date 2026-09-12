@@ -264,12 +264,10 @@ fixed height.
 
 ## Blue surfaces
 
-**Current state:** the surfaces use a blue→teal gradient (`--grad`, `#1A3CF7 → #0FD1C9`) as the
-mix of the electric blue and the original mint; mint stays the accent on top. Stops short of
-full mint so white text keeps contrast.
+**Current state:** one flat blue, `--blue: #1A3CF7`, everywhere a blue appears — button, contact,
+footer, hover-photo tints. A blue→teal gradient was tried and rejected. Mint stays the accent.
 
-`--blue: #1A3CF7` (with `--blue-deep` for the footer) is a **FastForward addition, not a DDX
-colour** — DDX's own palette is black / white / yellow `#FFF204` / neon greens. It carries the
+`--blue: #1A3CF7` is a **FastForward addition, not a DDX colour** — DDX's own palette is black / white / yellow `#FFF204` / neon greens. It carries the
 contact section, the footer and the top-right primary action (solid blue, white on hover).
 The city clocks use DDX's yellow `#FFF204`.
 

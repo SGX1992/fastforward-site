@@ -811,7 +811,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
    (DDX's own palette has no blue: black / white / #FFF204 / neon greens.
     This is a FastForward addition, chosen to sit with the mint accent.)
    ============================================================ */
-:root{--blue:#1A3CF7;--blue-deep:#0E2BD1;--blue-ink:#061548}
+:root{--blue:#1A3CF7}   /* the one blue used everywhere a blue appears */
 
 /* --- headline: Helvetica Neue runs wider than Archivo did — keep it to three lines --- */
 .hero h1{max-width:29ch;text-wrap:balance}
@@ -838,7 +838,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .contact__meta b{color:#fff}
 .contact__meta a{color:#fff;border-color:rgba(255,255,255,.4)}
 .contact__meta a:hover{color:var(--accent);border-color:var(--accent)}
-.contact .btn--primary{background:#fff;border-color:#fff;color:var(--blue-ink)}
+.contact .btn--primary{background:#fff;border-color:#fff;color:var(--blue)}
 .contact .btn--primary:hover{background:var(--accent);border-color:var(--accent);color:#06110f}
 
 /* city tour behind the section: blue-tinted via luminosity blend; only while hovering */
@@ -856,7 +856,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 }
 
 /* --- footer in blue --- */
-.foot{background:var(--blue-deep);border-top:1px solid rgba(255,255,255,.14)}
+.foot{background:var(--blue);border-top:1px solid rgba(255,255,255,.18)}
 .foot__in small,.foot__links a{color:rgba(255,255,255,.72)}
 .foot__links a:hover{color:#fff}
 .foot__in img{opacity:1}
@@ -885,18 +885,14 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 
 
 /* ============================================================
-   MIX OF BOTH BLUES — a blue→teal gradient for the surfaces,
-   mint kept as the accent on top of it
+   ONE BLUE — the gradient was tried and rejected; every blue on the
+   page is --blue. Mint remains the accent.
    ============================================================ */
-:root{
-  --grad:linear-gradient(120deg,#1A3CF7 0%,#1B55E8 38%,#11A6C8 76%,#0FD1C9 100%);
-  --grad-deep:linear-gradient(120deg,#0E2BD1 0%,#0B5EA8 60%,#0A8F98 100%);
-}
-.nav__cta--primary{background:var(--grad);border-color:transparent;box-shadow:0 6px 24px rgba(20,100,220,.35)}
+.nav__cta--primary{background:var(--blue);border-color:var(--blue);box-shadow:0 6px 24px rgba(26,60,247,.35)}
 .nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--blue)}
-.contact{background:var(--grad)}
-.contact.is-touring::after{background:linear-gradient(90deg,rgba(26,60,247,.5),rgba(17,166,200,.12) 55%,rgba(15,209,201,.45))}
-.foot{background:var(--grad-deep)}
+.contact{background:var(--blue)}
+.contact.is-touring::after{background:linear-gradient(90deg,rgba(26,60,247,.55),rgba(26,60,247,.15) 55%,rgba(26,60,247,.55))}
+.foot{background:var(--blue)}
 
 /* small text in Helvetica Neue reads best with a touch more air */
 .btn,.nav__cta{letter-spacing:.18em}
@@ -922,7 +918,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 }
 .cityfx img.is-on{opacity:.55;transform:scale(1.14)}
 .cityfx::after{                              /* the gradient tints the photo so it reads as the same blue family */
-  content:"";position:absolute;inset:0;background:var(--grad);mix-blend-mode:color;
+  content:"";position:absolute;inset:0;background:var(--blue);mix-blend-mode:color;
   opacity:0;transition:opacity .8s var(--ease);
 }
 .stance.is-cityfx .cityfx::after{opacity:.6}
@@ -954,6 +950,6 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .ed:hover .ed__bg{opacity:.62}
 .ed::after{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:var(--grad);mix-blend-mode:color;opacity:0;transition:opacity .6s var(--ease);
+  background:var(--blue);mix-blend-mode:color;opacity:0;transition:opacity .6s var(--ease);
 }
 .ed:hover::after{opacity:.65}
