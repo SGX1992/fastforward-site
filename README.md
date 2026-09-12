@@ -262,6 +262,41 @@ Card heights are matched by flex, with the gap on the paragraph and `margin-top:
 the button, so both buttons sit on one baseline however long the copy runs — don't set a
 fixed height.
 
+## Blue surfaces
+
+`--blue: #1A3CF7` (with `--blue-deep` for the footer) is a **FastForward addition, not a DDX
+colour** — DDX's own palette is black / white / yellow `#FFF204` / neon greens. It carries the
+contact section, the footer and the top-right primary action (solid blue, white on hover).
+The city clocks use DDX's yellow `#FFF204`.
+
+## City strip
+
+Each city is a link to its edition page on ddxconference.com. Above the name is a
+**landmark icon** (fetched with `better-icons`, mostly the `mingcute` line set) that flips to
+the country's circle-flag SVG on hover; the name gets a straight highlighter-marker sweep.
+Icons per city are listed in `/tmp/icons_picked.txt` at build time and inline in the markup —
+swap any one by replacing its `<svg class="ico-pin">`.
+
+## Contact slideshow (Unsplash)
+
+Hovering **Explore DDX** tours the seven cities in the section background — one frame every
+1.5s, blue-tinted via `mix-blend-mode: luminosity`, fine pointers only. Images are hotlinked
+from `images.unsplash.com` (`?auto=format&fit=crop&w=1600&q=70`, verified 200/image at
+build time). Unsplash's licence permits this without attribution, but they ask for it, so the
+footer carries a credit and the photos are:
+
+- tokyo: https://images.unsplash.com/photo-1513407030348-c983a97b98d8
+- dubai: https://images.unsplash.com/photo-1512453979798-5ea266f8880c
+- munich: https://images.unsplash.com/photo-1595867818082-083862f3d630
+- london: https://images.unsplash.com/photo-1513635269975-59663e0ac1ad
+- miami: https://images.unsplash.com/photo-1605723517503-3cadb5818a0c
+- newyork: https://images.unsplash.com/photo-1496588152823-86ff7695e68f
+- sandiego: https://images.unsplash.com/photo-1514939775307-d44e7f10cabd
+
+If Unsplash ever changes hotlinking terms, the images are decorative and can be dropped —
+the section works without them. For production polish, self-hosting downscaled copies is the
+safer option.
+
 ## Positioning
 
 FastForward Global is framed as **the company behind DDX** — a global think tank on the
