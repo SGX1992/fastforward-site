@@ -218,8 +218,8 @@ alone cannot detect wrap points. It re-runs on resize and after fonts load.
 
 ## Gallery tint
 
-Tiles rest with a **light blue tone** (`grayscale(.4) brightness(.9)` + a `mix-blend-mode: color`
-overlay of `--blue` at .16 — a full duotone at .5 was tried and was far too heavy) and lift to full
+Tiles rest with a **barely-there tone** (`grayscale(.22) brightness(.95)` + a `mix-blend-mode: color`
+overlay of the accent at .07 — heavier versions at .5 and .16 were both judged too much) and lift to full
 colour on hover. This is deliberately *not* removed under
 `prefers-reduced-motion` — a static tint is not motion (an earlier rule did strip it there, which
 is why the tint "disappeared" for some viewers).
@@ -276,8 +276,10 @@ fixed height.
 
 ## Colour surfaces
 
-Contact, footer and the top-right primary button are solid turquoise with dark text; the footer
-logo is inverted to dark with a `filter`. There is deliberately **no second colour** and no
+The **contact section and footer are white** with dark text (a solid turquoise block there was tried
+and felt too heavy); turquoise appears on them only as the accent — eyebrow rule, button text and
+hover. The top-right primary button stays solid turquoise with dark text. The footer logo is
+inverted to dark with a `filter`. There is deliberately **no second colour** and no
 gradient — both were tried and rejected. The clocks are DDX yellow `#FFF204` by request.
 
 ## City strip

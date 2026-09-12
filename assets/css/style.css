@@ -1076,3 +1076,21 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .foot__in small,.foot__links a{color:rgba(6,17,15,.72)}
 .foot__links a:hover{color:var(--on-accent)}
 .foot__in img{filter:brightness(0);opacity:.9}     /* the white mark would vanish on turquoise */
+
+/* ============================================================
+   BOTTOM OF PAGE IN WHITE; gallery tint down to barely-there
+   ============================================================ */
+.tile img,.tile video{filter:grayscale(.22) brightness(.95) contrast(1.02)}
+.tile::after{opacity:.07}
+
+.contact{background:#fff;color:var(--on-accent)}
+.contact .eyebrow{color:var(--on-accent)}
+.contact .eyebrow::before{background:var(--accent)}          /* the accent stays as a line, not a surface */
+.contact .btn--primary{background:var(--on-accent);border-color:var(--on-accent);color:var(--accent)}
+.contact .btn--primary:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.contact__meta a{border-color:rgba(6,17,15,.3)}
+.contact.is-touring::after{background:linear-gradient(90deg,rgba(0,255,215,.2),rgba(0,255,215,.05) 55%,rgba(0,255,215,.2))}
+.tour__img.is-on{opacity:.22}                                /* luminosity over white = a soft grey photo */
+
+.foot{background:#fff;border-top:1px solid rgba(6,17,15,.12)}
+.foot__in small,.foot__links a{color:rgba(6,17,15,.7)}
