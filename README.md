@@ -100,6 +100,13 @@ only), images scale, links sweep an accent underline.
   scroll events in hidden/background tabs, so an automated check against a headless or
   backgrounded pane will report the animations as dead when they are fine.
 
+## Live
+
+**https://fastforward.global/** — launched 2026-09-12. GitHub Pages with the `CNAME` file set
+to the apex; `www` redirects to it; HTTPS enforced. DNS is at GoDaddy: `@` A records to
+GitHub's four IPs, `www` CNAME to `sgx1992.github.io`, mail records untouched. To ship a
+change: `git pull` first (GitHub commits the `CNAME` file), edit, push to `main`.
+
 ## Test URL
 
 **https://sgx1992.github.io/fastforward-site/** — GitHub Pages, served from the `main`
