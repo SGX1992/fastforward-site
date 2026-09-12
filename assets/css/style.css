@@ -15,7 +15,7 @@
   --accent:#00FFD7;
   --accent-dim:rgba(0,255,215,.14);
 
-  --display:'Archivo',-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --display:"Helvetica Neue",Helvetica,Arial,sans-serif;   /* the original brand stack; Arial on Windows */
   --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
 
   --gut:clamp(20px,5vw,72px);
@@ -761,3 +761,47 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 }
 .ed:hover::before{transform:scaleX(1)}
 .ed--soon .ed__when{color:var(--accent)}
+
+/* ============================================================
+   CITIES — icon/flag, marker hover, live colon
+   ============================================================ */
+
+/* topbar: let the page show through a little more */
+.nav{background:rgba(14,14,14,.50)}
+.nav.is-stuck{background:rgba(14,14,14,.58)}
+
+/* icon above the name: a pin that flips to the country's flag on hover */
+.city__icon{display:block;position:relative;width:22px;height:22px;margin-bottom:.4em}
+.city__icon svg{
+  position:absolute;inset:0;width:100%;height:100%;display:block;
+  transition:opacity .38s var(--ease),transform .5s var(--ease);
+}
+.city__icon .ico-pin{color:var(--ink-low)}
+.city__icon .ico-flag{opacity:0;transform:scale(.55) rotate(-25deg)}
+.cities li:hover .ico-pin{opacity:0;transform:scale(.55) rotate(25deg)}
+.cities li:hover .ico-flag{opacity:1;transform:none}
+
+/* highlighter-marker sweep behind the name on hover; text flips dark on the mark */
+.cities li{cursor:default}
+.city__name{
+  position:relative;display:inline-block;z-index:0;padding:0 .1em;margin-left:-.1em;
+  transition:color .3s var(--ease);
+}
+.city__name::before{
+  content:"";position:absolute;z-index:-1;left:-.04em;right:-.04em;top:.14em;bottom:.04em;
+  background:var(--accent);border-radius:.1em;opacity:.92;
+  transform:scaleX(0) skewX(-9deg);transform-origin:left center;
+  transition:transform .42s var(--ease);
+}
+.cities li:hover .city__name::before{transform:scaleX(1) skewX(-9deg)}
+.cities li:hover .city__name{color:#06110f}
+.cities li:hover .city__time{color:var(--accent)}
+
+/* the colon ticks once a second so the clocks read as live */
+.city__time .blink{display:inline-block;animation:blink 1s steps(1,end) infinite}
+@keyframes blink{50%{opacity:0}}
+
+@media(prefers-reduced-motion:reduce){
+  .city__time .blink{animation:none}
+  .city__icon svg,.city__name::before{transition:none}
+}

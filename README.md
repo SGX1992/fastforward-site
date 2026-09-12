@@ -26,7 +26,7 @@ Sampled from the **live** site rather than eyeballed — see "Where things came 
 | Background | `#0E0E0E` |
 | Ink | `#FFFFFF` |
 | Accent (mint) | `#00FFD7` |
-| Display / body | Archivo |
+| Display / body | Helvetica Neue → Helvetica → Arial (system stack, as on the original site; not a webfont, so Windows/Android see Arial) |
 | Labels & eyebrows | IBM Plex Mono |
 
 ## The hero annotation marks
