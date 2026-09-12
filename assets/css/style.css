@@ -1119,3 +1119,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* top-right primary: WHITE on hover. Higher specificity than the generic
    .nav__cta:hover so it can't be out-ordered by later appends again. */
 .nav__actions .nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--on-accent);box-shadow:0 6px 24px rgba(255,255,255,.18)}
+
+/* kicker city: no chip — plain accent text, still pulsing by opacity */
+.rot{background:transparent;padding:0;border-radius:0;color:var(--accent);min-width:9.6ch;justify-content:flex-start}
+.rot__w{color:var(--accent)}
