@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://fastforward.global/">
 <link rel="icon" href="assets/img/favicon.ico">
-<link rel="stylesheet" href="assets/css/style.css?v=55">
+<link rel="stylesheet" href="assets/css/style.css?v=56">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -531,6 +531,9 @@
     var words = (rot.getAttribute('data-words') || '').split('|').filter(Boolean);
     var w = rot.querySelector('.rot__w'), idx = 0;
     if (words.length > 1) setInterval(function(){
+      // Never swap while the tab is hidden: transitions don't advance there, so a
+      // swap would park the word at its off-screen start until the tab returns.
+      if (document.hidden) return;
       w.classList.add('out');
       setTimeout(function(){
         idx = (idx + 1) % words.length;
