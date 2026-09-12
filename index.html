@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=39">
+<link rel="stylesheet" href="assets/css/style.css?v=40">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -605,6 +605,16 @@
   var tourBtn = document.querySelector('.contact .btn--primary'), tourBox = document.querySelector('.contact__bg');
   if (tourBtn && tourBox && fine && !reduce) {
     var frames = [].slice.call(tourBox.querySelectorAll('.tour__img')), tourI = -1, tourT = null;
+    // Warm the frames up once the section is within ~600px, so the first hover
+    // shows a photo immediately instead of waiting on a 1600px download.
+    if ('IntersectionObserver' in window) {
+      var warm = new IntersectionObserver(function(entries){
+        if (!entries.some(function(e){ return e.isIntersecting; })) return;
+        frames.forEach(function(f){ f.loading = 'eager'; if (f.decode) f.decode().catch(function(){}); });
+        warm.disconnect();
+      }, {rootMargin:'600px 0px'});
+      warm.observe(tourBox);
+    }
     var tourStep = function(){
       frames.forEach(function(f){ f.classList.remove('is-on'); });
       tourI = (tourI + 1) % frames.length;
