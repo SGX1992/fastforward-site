@@ -25,7 +25,7 @@ Sampled from the **live** site rather than eyeballed — see "Where things came 
 | --- | --- |
 | Background | `#0E0E0E` |
 | Ink | `#FFFFFF` |
-| Accent (mint) | `#00FFD7` |
+| Accent | `#1A3CF7` — the one blue; the original mint `#00FFD7` was retired on 2026-09-12 (two-colour feel). On near-black it is ~2.4:1, so accent *text* is neutral white with the blue on lines/chips/fills |
 | Display / body | Helvetica Neue → Helvetica → Arial (system stack, as on the original site; not a webfont, so Windows/Android see Arial) |
 | Labels & eyebrows | Helvetica Neue too, uppercase and wide-tracked (`--label`); the page loads **no external fonts** |
 
@@ -216,6 +216,13 @@ spaced-out list. A small JS pass (`markRowEnds`) tags whichever city ends a visu
 `.is-rowend` and hides its separator dot, so a dot never dangles at a line break — CSS
 alone cannot detect wrap points. It re-runs on resize and after fonts load.
 
+## Gallery tint
+
+Tiles rest as a **blue duotone** (`grayscale(.9)` + a `mix-blend-mode: color` overlay of
+`--blue` at .5) and lift to full colour on hover. This is deliberately *not* removed under
+`prefers-reduced-motion` — a static tint is not motion (an earlier rule did strip it there, which
+is why the tint "disappeared" for some viewers).
+
 ## Adding to the gallery
 
 Tiles accept **images, GIFs and video**. A still or GIF is just an `<img>`; a clip is:
@@ -264,8 +271,8 @@ fixed height.
 
 ## Blue surfaces
 
-**Current state:** one flat blue, `--blue: #1A3CF7`, everywhere a blue appears — button, contact,
-footer, hover-photo tints. A blue→teal gradient was tried and rejected. Mint stays the accent.
+**Current state:** one flat blue, `--blue: #1A3CF7`, and it is also `--accent` — marks, rules,
+buttons, contact, footer, hover tints, the gallery duotone. A blue→teal gradient was tried and rejected. Mint stays the accent.
 
 `--blue: #1A3CF7` is a **FastForward addition, not a DDX colour** — DDX's own palette is black / white / yellow `#FFF204` / neon greens. It carries the
 contact section, the footer and the top-right primary action (solid blue, white on hover).
