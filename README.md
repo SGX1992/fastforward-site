@@ -223,6 +223,10 @@ Tiles rest as a **blue duotone** (`grayscale(.9)` + a `mix-blend-mode: color` ov
 `prefers-reduced-motion` — a static tint is not motion (an earlier rule did strip it there, which
 is why the tint "disappeared" for some viewers).
 
+A `color` blend takes its luminance from the photo, so a source image that is itself almost
+black (the SiteWasp drone on black) reads as a flat dark block at rest — it only shows in
+colour on hover. Prefer mid-tone imagery for new tiles, or give a dark one a lighter grade.
+
 ## Adding to the gallery
 
 Tiles accept **images, GIFs and video**. A still or GIF is just an `<img>`; a clip is:
