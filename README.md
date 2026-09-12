@@ -391,3 +391,5 @@ descriptions). The mission paragraph is close to verbatim from Notion.
 - Favicon set is the white FastForward mark on `#0e0e0e`: `favicon.ico` (16/32/48, PNG entries), `favicon-32.png`,
   `favicon-16.png`, `apple-touch-icon.png` (180), `icon-192.png` / `icon-512.png` via `site.webmanifest`.
   Source: `assets/img/2Group-1410103505.png` rendered at 360px inside a 512px square.
+
+- Footer credit removed 2026-09-13 on request ("City photography via Unsplash."); the Unsplash licence does not require attribution. Photo IDs stay documented above.
