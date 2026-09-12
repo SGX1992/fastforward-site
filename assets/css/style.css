@@ -1111,3 +1111,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .ed:hover::after{opacity:0}                          /* same for the edition tiles */
 
 @media(prefers-reduced-motion:reduce){ .rot{animation:none;opacity:1} }
+
+/* gallery: back to the original tone — 32% desaturation, no colour overlay at all */
+.tile img,.tile video{filter:grayscale(.32) brightness(.9)}
+.tile::after{display:none}

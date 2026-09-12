@@ -218,9 +218,9 @@ alone cannot detect wrap points. It re-runs on resize and after fonts load.
 
 ## Gallery tint
 
-Tiles rest with a **barely-there tone** (`grayscale(.22) brightness(.95)` + a `mix-blend-mode: color`
-overlay of the accent at .07 — heavier versions at .5 and .16 were both judged too much) and lift to full
-colour on hover. This is deliberately *not* removed under
+Tiles rest at the **original tone** — `grayscale(.32) brightness(.9)`, **no colour overlay** — and lift
+to full colour on hover. Every colour-blend variant (.5, .16, .07) was tried and rejected; the
+`.tile::after` overlay is disabled and should stay that way. This is deliberately *not* removed under
 `prefers-reduced-motion` — a static tint is not motion (an earlier rule did strip it there, which
 is why the tint "disappeared" for some viewers).
 
