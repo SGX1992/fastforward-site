@@ -25,7 +25,7 @@ Sampled from the **live** site rather than eyeballed — see "Where things came 
 | --- | --- |
 | Background | `#0E0E0E` |
 | Ink | `#FFFFFF` |
-| Accent | `#1A3CF7` — the one blue; the original mint `#00FFD7` was retired on 2026-09-12 (two-colour feel). On near-black it is ~2.4:1, so accent *text* is neutral white with the blue on lines/chips/fills |
+| Accent | `#00FFD7` turquoise — **the one colour** (buttons, contact, footer, marks, tints). A blue `#1A3CF7` was tried on 2026-09-12 and the user preferred the turquoise. Turquoise surfaces use dark text `#06110f`; on the dark page turquoise text is ~14:1 |
 | Display / body | Helvetica Neue → Helvetica → Arial (system stack, as on the original site; not a webfont, so Windows/Android see Arial) |
 | Labels & eyebrows | Helvetica Neue too, uppercase and wide-tracked (`--label`); the page loads **no external fonts** |
 
@@ -274,14 +274,11 @@ Card heights are matched by flex, with the gap on the paragraph and `margin-top:
 the button, so both buttons sit on one baseline however long the copy runs — don't set a
 fixed height.
 
-## Blue surfaces
+## Colour surfaces
 
-**Current state:** one flat blue, `--blue: #1A3CF7`, and it is also `--accent` — marks, rules,
-buttons, contact, footer, hover tints, the gallery duotone. A blue→teal gradient was tried and rejected. Mint stays the accent.
-
-`--blue: #1A3CF7` is a **FastForward addition, not a DDX colour** — DDX's own palette is black / white / yellow `#FFF204` / neon greens. It carries the
-contact section, the footer and the top-right primary action (solid blue, white on hover).
-The city clocks use DDX's yellow `#FFF204`.
+Contact, footer and the top-right primary button are solid turquoise with dark text; the footer
+logo is inverted to dark with a `filter`. There is deliberately **no second colour** and no
+gradient — both were tried and rejected. The clocks are DDX yellow `#FFF204` by request.
 
 ## City strip
 

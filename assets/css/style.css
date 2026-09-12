@@ -12,8 +12,8 @@
   --ink:#FFFFFF;
   --ink-mid:rgba(255,255,255,.62);
   --ink-low:rgba(255,255,255,.40);
-  --accent:#1A3CF7;
-  --accent-dim:rgba(26,60,247,.14);
+  --accent:#00FFD7;
+  --accent-dim:rgba(0,255,215,.14);
 
   --display:"Helvetica Neue",Helvetica,Arial,sans-serif;   /* the original brand stack; Arial on Windows */
   --label:"Helvetica Neue",Helvetica,Arial,sans-serif;   /* small text: same face, wide-tracked */
@@ -78,7 +78,7 @@ body::after{
   transition:border-color .3s,color .3s,background .3s,transform .5s var(--ease);
 }
 .nav__cta:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
-.nav__cta--primary{border-color:rgba(26,60,247,.45);color:var(--accent)}
+.nav__cta--primary{border-color:rgba(0,255,215,.45);color:var(--accent)}
 .nav__cta--primary:hover{background:var(--accent);color:#06110f;border-color:var(--accent)}
 
 @media(max-width:720px){
@@ -101,7 +101,7 @@ body::after{
   position:absolute;inset:0;pointer-events:none;opacity:.30;
   background:
     repeating-linear-gradient(115deg,transparent 0 62px,rgba(255,255,255,.030) 62px 63px),
-    radial-gradient(120% 78% at 50% 0%,rgba(26,60,247,.10),transparent 62%);
+    radial-gradient(120% 78% at 50% 0%,rgba(0,255,215,.10),transparent 62%);
   mask-image:linear-gradient(180deg,#000 0%,#000 52%,transparent 100%);
   -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 52%,transparent 100%);
 }
@@ -195,7 +195,7 @@ body::after{
 .mission{border-top:1px solid var(--line-soft);position:relative;overflow:hidden}
 .mission__glow{
   position:absolute;left:50%;top:-40%;translate:-50% 0;width:min(1000px,120vw);aspect-ratio:1;
-  background:radial-gradient(circle,rgba(26,60,247,.12),transparent 62%);pointer-events:none;
+  background:radial-gradient(circle,rgba(0,255,215,.12),transparent 62%);pointer-events:none;
 }
 .mission blockquote{
   margin:0;position:relative;z-index:2;max-width:26ch;
@@ -503,7 +503,7 @@ body::after{
   transition:border-color .35s var(--ease),color .35s var(--ease),background .35s var(--ease),
              transform .5s var(--ease);
 }
-.btn--primary{border-color:rgba(26,60,247,.5);color:var(--accent)}
+.btn--primary{border-color:rgba(0,255,215,.5);color:var(--accent)}
 .btn--primary:hover{background:var(--accent);color:#06110f;border-color:var(--accent)}
 .btn svg{width:16px;height:16px;transition:transform .4s var(--ease)}
 .btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-dim)}
@@ -616,7 +616,7 @@ h2[data-rv],blockquote[data-rv]{transform:translateY(26px)}
   background:var(--bg-card);
   transition:border-color .45s var(--ease),background .45s var(--ease),transform .45s var(--ease);
 }
-.job:hover{border-color:rgba(26,60,247,.35);background:var(--bg-lift);transform:translateY(-4px)}
+.job:hover{border-color:rgba(0,255,215,.35);background:var(--bg-lift);transform:translateY(-4px)}
 
 /* the open application is the softer of the two — dashed, unfilled */
 .job--open{background:transparent;border-style:dashed}
@@ -811,7 +811,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
    (DDX's own palette has no blue: black / white / #FFF204 / neon greens.
     This is a FastForward addition, chosen to sit with the mint accent.)
    ============================================================ */
-:root{--blue:#1A3CF7}   /* the one blue used everywhere a blue appears */
+
 
 /* --- headline: Helvetica Neue runs wider than Archivo did — keep it to three lines --- */
 .hero h1{max-width:29ch;text-wrap:balance}
@@ -825,11 +825,11 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .rot{font-weight:500;min-width:9.6ch}
 
 /* --- top-right: solid blue, white on hover, always the obvious action --- */
-.nav__cta--primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 6px 24px rgba(26,60,247,.35)}
-.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--blue)}
+.nav__cta--primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 6px 24px rgba(0,255,215,.35)}
+.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--accent)}
 
 /* --- contact section in blue --- */
-.contact{background:var(--blue);border-top:0;position:relative;overflow:hidden;color:#fff}
+.contact{background:var(--accent);border-top:0;position:relative;overflow:hidden;color:#fff}
 .contact .wrap{position:relative;z-index:1}
 .contact .eyebrow{color:#fff}
 .contact .eyebrow::before{background:#fff}
@@ -838,7 +838,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .contact__meta b{color:#fff}
 .contact__meta a{color:#fff;border-color:rgba(255,255,255,.4)}
 .contact__meta a:hover{color:var(--accent);border-color:var(--accent)}
-.contact .btn--primary{background:#fff;border-color:#fff;color:var(--blue)}
+.contact .btn--primary{background:#fff;border-color:#fff;color:var(--accent)}
 .contact .btn--primary:hover{background:var(--accent);border-color:var(--accent);color:#06110f}
 
 /* city tour behind the section: blue-tinted via luminosity blend; only while hovering */
@@ -852,11 +852,11 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .tour__img.is-on{opacity:.62;transform:scale(1.14)}
 .contact.is-touring::after{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:linear-gradient(90deg,rgba(26,60,247,.55),rgba(26,60,247,.15) 55%,rgba(26,60,247,.6));
+  background:linear-gradient(90deg,rgba(0,255,215,.55),rgba(0,255,215,.15) 55%,rgba(0,255,215,.6));
 }
 
 /* --- footer in blue --- */
-.foot{background:var(--blue);border-top:1px solid rgba(255,255,255,.18)}
+.foot{background:var(--accent);border-top:1px solid rgba(255,255,255,.18)}
 .foot__in small,.foot__links a{color:rgba(255,255,255,.72)}
 .foot__links a:hover{color:#fff}
 .foot__in img{opacity:1}
@@ -888,11 +888,11 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
    ONE BLUE — the gradient was tried and rejected; every blue on the
    page is --blue. Mint remains the accent.
    ============================================================ */
-.nav__cta--primary{background:var(--blue);border-color:var(--blue);box-shadow:0 6px 24px rgba(26,60,247,.35)}
-.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--blue)}
-.contact{background:var(--blue)}
-.contact.is-touring::after{background:linear-gradient(90deg,rgba(26,60,247,.55),rgba(26,60,247,.15) 55%,rgba(26,60,247,.55))}
-.foot{background:var(--blue)}
+.nav__cta--primary{background:var(--accent);border-color:var(--accent);box-shadow:0 6px 24px rgba(0,255,215,.35)}
+.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--accent)}
+.contact{background:var(--accent)}
+.contact.is-touring::after{background:linear-gradient(90deg,rgba(0,255,215,.55),rgba(0,255,215,.15) 55%,rgba(0,255,215,.55))}
+.foot{background:var(--accent)}
 
 /* small text in Helvetica Neue reads best with a touch more air */
 .btn,.nav__cta{letter-spacing:.18em}
@@ -905,7 +905,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .rot{animation:rotPulse 1.8s ease-in-out infinite;transform-origin:center}
 @keyframes rotPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
 .rot__w{animation:rotGlow 1.8s ease-in-out infinite}
-@keyframes rotGlow{0%,100%{text-shadow:0 0 0 rgba(26,60,247,0)}50%{text-shadow:0 0 18px rgba(26,60,247,.85),0 0 2px rgba(26,60,247,.9)}}
+@keyframes rotGlow{0%,100%{text-shadow:0 0 0 rgba(0,255,215,0)}50%{text-shadow:0 0 18px rgba(0,255,215,.85),0 0 2px rgba(0,255,215,.9)}}
 
 /* --- city photo behind the positioning section while a city is hovered --- */
 .stance{position:relative;overflow:hidden}
@@ -918,7 +918,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 }
 .cityfx img.is-on{opacity:.55;transform:scale(1.14)}
 .cityfx::after{                              /* the gradient tints the photo so it reads as the same blue family */
-  content:"";position:absolute;inset:0;background:var(--blue);mix-blend-mode:color;
+  content:"";position:absolute;inset:0;background:var(--accent);mix-blend-mode:color;
   opacity:0;transition:opacity .8s var(--ease);
 }
 .stance.is-cityfx .cityfx::after{opacity:.6}
@@ -950,7 +950,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .ed:hover .ed__bg{opacity:.62}
 .ed::after{
   content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background:var(--blue);mix-blend-mode:color;opacity:0;transition:opacity .6s var(--ease);
+  background:var(--accent);mix-blend-mode:color;opacity:0;transition:opacity .6s var(--ease);
 }
 .ed:hover::after{opacity:.65}
 
@@ -973,7 +973,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 
 .tour__img{transition:opacity 1.3s var(--ease),transform 8s linear}
 .tour__img.is-on{opacity:.3}
-.contact.is-touring::after{background:linear-gradient(90deg,rgba(26,60,247,.35),rgba(26,60,247,.1) 55%,rgba(26,60,247,.35))}
+.contact.is-touring::after{background:linear-gradient(90deg,rgba(0,255,215,.35),rgba(0,255,215,.1) 55%,rgba(0,255,215,.35))}
 
 /* metrics: transparent cells so the photo shows through them too.
    The grid lines used to be the container showing through 1px gaps between
@@ -989,11 +989,11 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 
 /* ============================================================
    ONE COLOUR — the mint accent folds into the blue.
-   #1A3CF7 on near-black is ~2.4:1, below the 4.5:1 small text needs,
+   #00FFD7 on near-black is ~2.4:1, below the 4.5:1 small text needs,
    so accent *text* becomes neutral with the blue on lines, chips and
    fills instead. The clocks stay DDX yellow by request.
    ============================================================ */
-:root{--accent:#1A3CF7;--accent-dim:rgba(26,60,247,.16)}
+:root{--accent:#00FFD7;--accent-dim:rgba(0,255,215,.16)}
 
 .eyebrow{color:var(--ink-mid)}                          /* rule line stays blue via ::before */
 .ed--soon .ed__when{color:#fff}
@@ -1002,17 +1002,17 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .mission blockquote em{color:#fff;border-bottom:3px solid var(--accent)}
 
 /* rotating city: white on a blue chip — prominent and legible */
-.rot{background:var(--blue);color:#fff;padding:0 .55em;border-radius:.32em;min-width:0}
+.rot{background:var(--accent);color:#fff;padding:0 .55em;border-radius:.32em;min-width:0}
 .rot__w{color:#fff}
 
 /* marker sweep is blue now, so the name goes white on it */
 .cities li:hover .city__name{color:#fff}
 
 /* hovers fill blue with white text rather than turning small text blue */
-.btn:hover,.nav__cta:hover{background:var(--blue);border-color:var(--blue);color:#fff}
-.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--blue)}
+.btn:hover,.nav__cta:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--accent)}
 .contact .btn--primary:hover{background:transparent;border-color:#fff;color:#fff}
-.job:hover{border-color:rgba(26,60,247,.55)}
+.job:hover{border-color:rgba(0,255,215,.55)}
 
 /* ============================================================
    GALLERY TINT — blue duotone at rest, full colour on hover
@@ -1020,7 +1020,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .tile img,.tile video{filter:grayscale(.9) brightness(.8) contrast(1.06)}
 .tile::after{
   content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
-  background:var(--blue);mix-blend-mode:color;opacity:.5;
+  background:var(--accent);mix-blend-mode:color;opacity:.5;
   transition:opacity .7s var(--ease);
 }
 @media(hover:hover) and (pointer:fine){
@@ -1035,3 +1035,44 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* gallery tone, dialled back: a hint of the blue, not a duotone */
 .tile img,.tile video{filter:grayscale(.4) brightness(.9) contrast(1.03)}
 .tile::after{opacity:.16}
+
+
+/* ============================================================
+   ONE COLOUR — TURQUOISE. The blue was tried and the user preferred
+   the original turquoise. On the dark page it reads ~14:1, so accent
+   text is fine again; on turquoise *surfaces* text must be dark.
+   ============================================================ */
+:root{--accent:#00FFD7;--accent-dim:rgba(0,255,215,.14);--on-accent:#06110f}
+
+/* accent text restored on dark */
+.eyebrow{color:var(--accent)}
+.ed--soon .ed__when{color:var(--accent)}
+.ex:hover .ex__n{color:var(--accent)}
+.stance__lead b{color:var(--accent);border-bottom:0;padding-bottom:0}
+.mission blockquote em{color:var(--accent);border-bottom:0}
+
+/* turquoise surfaces → dark text */
+.rot{background:var(--accent);color:var(--on-accent)}
+.rot__w{color:var(--on-accent)}
+.cities li:hover .city__name{color:var(--on-accent)}
+.nav__cta--primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent);box-shadow:0 6px 24px rgba(0,255,215,.28)}
+.nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--on-accent)}
+.btn:hover,.nav__cta:hover{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+
+.contact{background:var(--accent);color:var(--on-accent)}
+.contact .eyebrow{color:var(--on-accent)}
+.contact .eyebrow::before{background:var(--on-accent)}
+.contact h2{color:var(--on-accent)}
+.contact__lead{color:rgba(6,17,15,.78)}
+.contact__meta{color:rgba(6,17,15,.75)}
+.contact__meta b{color:var(--on-accent)}
+.contact__meta a{color:var(--on-accent);border-color:rgba(6,17,15,.35)}
+.contact__meta a:hover{color:var(--on-accent);border-color:var(--on-accent)}
+.contact .btn--primary{background:var(--on-accent);border-color:var(--on-accent);color:var(--accent)}
+.contact .btn--primary:hover{background:#fff;border-color:#fff;color:var(--on-accent)}
+.contact.is-touring::after{background:linear-gradient(90deg,rgba(0,255,215,.45),rgba(0,255,215,.12) 55%,rgba(0,255,215,.45))}
+
+.foot{background:var(--accent);border-top:1px solid rgba(6,17,15,.18)}
+.foot__in small,.foot__links a{color:rgba(6,17,15,.72)}
+.foot__links a:hover{color:var(--on-accent)}
+.foot__in img{filter:brightness(0);opacity:.9}     /* the white mark would vanish on turquoise */
