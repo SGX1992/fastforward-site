@@ -27,7 +27,7 @@ Sampled from the **live** site rather than eyeballed — see "Where things came 
 | Ink | `#FFFFFF` |
 | Accent (mint) | `#00FFD7` |
 | Display / body | Helvetica Neue → Helvetica → Arial (system stack, as on the original site; not a webfont, so Windows/Android see Arial) |
-| Labels & eyebrows | IBM Plex Mono |
+| Labels & eyebrows | Helvetica Neue too, uppercase and wide-tracked (`--label`); the page loads **no external fonts** |
 
 ## The hero annotation marks
 
@@ -264,6 +264,10 @@ fixed height.
 
 ## Blue surfaces
 
+**Current state:** the surfaces use a blue→teal gradient (`--grad`, `#1A3CF7 → #0FD1C9`) as the
+mix of the electric blue and the original mint; mint stays the accent on top. Stops short of
+full mint so white text keeps contrast.
+
 `--blue: #1A3CF7` (with `--blue-deep` for the footer) is a **FastForward addition, not a DDX
 colour** — DDX's own palette is black / white / yellow `#FFF204` / neon greens. It carries the
 contact section, the footer and the top-right primary action (solid blue, white on hover).
@@ -276,6 +280,13 @@ Each city is a link to its edition page on ddxconference.com. Above the name is 
 the country's circle-flag SVG on hover; the name gets a straight highlighter-marker sweep.
 Icons per city are listed in `/tmp/icons_picked.txt` at build time and inline in the markup —
 swap any one by replacing its `<svg class="ico-pin">`.
+
+## City photos on hover
+
+The same seven Unsplash photos back three hover moments: the **city strip** (photo fades
+behind the whole positioning section, tinted by the gradient), the **upcoming-edition tiles**
+(photo inside the tile), and the **Explore DDX tour** below. Strip and tile images carry
+`data-src` and are attached on first pointer approach, so they cost nothing on page load.
 
 ## Contact slideshow (Unsplash)
 
