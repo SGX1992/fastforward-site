@@ -192,7 +192,10 @@ columns would break the flush bottom edge. Amplitude per column comes from the c
 currently a copy of `ddx-stage.jpg` standing in until the intended photograph is supplied.
 
 **DDX.** Leads on "one of the world's fastest growing UX and design conferences", then a
-strip of conference photography, then the "Learn more about DDX" button.
+strip of conference photography, then the "Learn more about DDX" button, plus **upcoming-edition tiles** linking to each
+edition's page on ddxconference.com (San Diego, Miami, Tokyo as of 2026-09-12, and an
+"All editions" tile). These are hand-maintained — when the calendar moves, update them in
+`index.html`; past editions are not shown.
 
 The **seven cities** (Tokyo, Dubai, Munich, London, Miami, New York, San Diego) now sit
 under the 10 / 20 / 7 metrics strip instead, so the "7" is immediately concrete. They fit
