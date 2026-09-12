@@ -1115,3 +1115,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* gallery: back to the original tone — 32% desaturation, no colour overlay at all */
 .tile img,.tile video{filter:grayscale(.32) brightness(.9)}
 .tile::after{display:none}
+
+/* top-right primary: WHITE on hover. Higher specificity than the generic
+   .nav__cta:hover so it can't be out-ordered by later appends again. */
+.nav__actions .nav__cta--primary:hover{background:#fff;border-color:#fff;color:var(--on-accent);box-shadow:0 6px 24px rgba(255,255,255,.18)}
