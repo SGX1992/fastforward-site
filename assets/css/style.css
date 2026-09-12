@@ -947,3 +947,13 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
    gets a little more room than the body grid. --- */
 .hero__inner{max-width:1420px}
 .hero h1{max-width:33ch;text-wrap:pretty}
+
+/* --- edition tiles: same gradient tint as the strip, and a lighter grade, so night
+   skylines (Tokyo, San Diego) still register against the dark tile --- */
+.ed__bg{filter:grayscale(.5) brightness(.68) contrast(1.08)}
+.ed:hover .ed__bg{opacity:.62}
+.ed::after{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:var(--grad);mix-blend-mode:color;opacity:0;transition:opacity .6s var(--ease);
+}
+.ed:hover::after{opacity:.65}
