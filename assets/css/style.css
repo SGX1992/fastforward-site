@@ -1097,3 +1097,17 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 
 /* kicker city: quicker pulse (1.8s felt slow) */
 .rot,.rot__w{animation-duration:1.1s}
+
+/* ============================================================
+   CITY STRIP — pulse by transparency, no colour on hover
+   ============================================================ */
+.rot{animation:rotFade 1.1s ease-in-out infinite;transform:none}
+@keyframes rotFade{0%,100%{opacity:1}50%{opacity:.5}}
+.rot__w{animation:none;text-shadow:none}
+
+.city__name::before{display:none}                    /* the colour marker is gone */
+.cities li:hover .city__name{color:#fff}             /* stays white on black */
+.stance.is-cityfx .cityfx::after{opacity:0}          /* photo breathes in neutral, no tint */
+.ed:hover::after{opacity:0}                          /* same for the edition tiles */
+
+@media(prefers-reduced-motion:reduce){ .rot{animation:none;opacity:1} }
