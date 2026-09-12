@@ -941,3 +941,9 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
   .rot,.rot__w{animation:none}
   .cityfx img,.ed__bg{transition:opacity .3s;transform:none}
 }
+
+/* --- headline measure: `balance` was shortening every line to equalise them (~750px in
+   an 1176px column). `pretty` avoids orphans without doing that; the hero column also
+   gets a little more room than the body grid. --- */
+.hero__inner{max-width:1420px}
+.hero h1{max-width:33ch;text-wrap:pretty}
