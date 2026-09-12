@@ -953,3 +953,35 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
   background:var(--blue);mix-blend-mode:color;opacity:0;transition:opacity .6s var(--ease);
 }
 .ed:hover::after{opacity:.65}
+
+/* ============================================================
+   GENTLER REVEALS + CHEVRON + TRANSPARENT METRICS
+   ============================================================ */
+
+/* a small chevron for every city; the flag still takes over on hover */
+.city__icon{width:16px;height:16px;margin-bottom:.45em}
+.city__icon .ico-pin{color:var(--ink-mid)}
+
+/* the section keeps its own colour; the photo only breathes in behind it */
+.cityfx img{transition:opacity 1.3s var(--ease),transform 10s linear}
+.cityfx img.is-on{opacity:.2}
+.stance.is-cityfx .cityfx::after{opacity:.22}
+
+.ed__bg{transition:opacity 1s var(--ease),transform 8s linear}
+.ed:hover .ed__bg{opacity:.24}
+.ed:hover::after{opacity:.3}
+
+.tour__img{transition:opacity 1.3s var(--ease),transform 8s linear}
+.tour__img.is-on{opacity:.3}
+.contact.is-touring::after{background:linear-gradient(90deg,rgba(26,60,247,.35),rgba(26,60,247,.1) 55%,rgba(26,60,247,.35))}
+
+/* metrics: transparent cells so the photo shows through them too.
+   The grid lines used to be the container showing through 1px gaps between
+   opaque cells — with transparent cells they'd vanish, so draw them as borders. */
+.metrics{background:transparent;gap:0;border:1px solid var(--line-soft)}
+.metric{background:transparent;border-right:1px solid var(--line-soft)}
+.metric:last-child{border-right:0}
+@media(max-width:900px){
+  .metric:nth-child(2){border-right:0}
+  .metric:nth-child(-n+2){border-bottom:1px solid var(--line-soft)}
+}
