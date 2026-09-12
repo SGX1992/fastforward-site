@@ -123,6 +123,23 @@ behind the hero. As a hero backdrop it had to be graded down so hard (a measured
 of 12/255) that it was effectively invisible; as a subject it keeps almost all its own
 light (`contrast(1.04) saturate(.92)`). The hero uses the cross-fading stills instead.
 
+**The frame can never be empty, and the clip can always be started.** Two rules, both
+learned from a real "video not visible" report:
+
+- The `<video>` is **never under a `clip-path`** (WebKit may not paint it), and it does
+  **not** draw its own poster — a real `<img class="reel__poster">` sits underneath. The
+  reveal wipe is an `::after` curtain that slides away.
+- State follows **media events**, not intent: `.is-playing` is set on `playing` and removed
+  on `pause` / `error`; while it is absent, the poster and a **"Play showreel" button**
+  show, and the button starts playback from a user gesture (allowed everywhere).
+
+**Every reveal on the page fails open.** Scroll-triggered reveals hide content until an
+IntersectionObserver adds `.is-in`. That must never be the only way content appears, so
+zero-duration delayed CSS animations force the final state regardless: the showreel curtain
+lifts by 3s after load, everything else is visible by 7s. Same end values as the `.is-in`
+path, so normal motion is unchanged — it just cannot leave anything hidden. Keep this when
+adding new reveals.
+
 It **plays only while on screen** — an IntersectionObserver starts it at 25% visibility and
 pauses it on the way out, so a below-the-fold video costs nothing until someone scrolls to
 it. `preload="metadata"` for the same reason. The `play()` call is nudged and its rejection
