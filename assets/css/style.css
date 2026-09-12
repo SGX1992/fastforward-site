@@ -1094,3 +1094,6 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 
 .foot{background:#fff;border-top:1px solid rgba(6,17,15,.12)}
 .foot__in small,.foot__links a{color:rgba(6,17,15,.7)}
+
+/* kicker city: quicker pulse (1.8s felt slow) */
+.rot,.rot__w{animation-duration:1.1s}
