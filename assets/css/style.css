@@ -189,18 +189,7 @@ body::after{
 .event__hero-in h3{font-size:clamp(1.5rem,3.2vw,2.6rem);font-weight:600;max-width:20ch}
 .event__hero-in p{margin-top:16px;color:var(--ink-mid);max-width:52ch;line-height:1.7}
 
-.editions{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--line-soft);margin-top:clamp(26px,3.4vw,40px);border:1px solid var(--line-soft)}
-.edition{background:var(--bg);padding:clamp(24px,3vw,34px);position:relative;overflow:hidden}
-.edition::before{content:"";position:absolute;left:0;top:0;width:100%;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.edition:hover::before{transform:scaleX(1)}
-.edition__city{font-size:clamp(1.2rem,2vw,1.6rem);font-weight:650;letter-spacing:-.03em}
-.edition__when{margin-top:8px;font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
-.edition__note{margin-top:14px;color:var(--ink-mid);font-size:.94rem;line-height:1.62}
-.edition__status{
-  margin-top:18px;display:inline-block;font-family:var(--mono);font-size:9.5px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-low);
-  border:1px solid var(--line);border-radius:999px;padding:5px 11px;
-}
+
 
 /* ====================== MISSION ====================== */
 .mission{border-top:1px solid var(--line-soft);position:relative;overflow:hidden}
@@ -746,7 +735,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
    ============================================================ */
 .editions{margin-top:clamp(28px,3.6vw,44px)}
 .editions__grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
   gap:1px;background:var(--line-soft);border:1px solid var(--line-soft);
 }
 .ed{
