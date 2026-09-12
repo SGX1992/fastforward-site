@@ -1031,3 +1031,7 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* chip: centre the word vertically whatever the kicker's line-height is */
 .rot{display:inline-flex;align-items:center;justify-content:center;height:1.55em;line-height:1;vertical-align:middle;padding:0 .6em}
 .rot__w{line-height:1}
+
+/* gallery tone, dialled back: a hint of the blue, not a duotone */
+.tile img,.tile video{filter:grayscale(.4) brightness(.9) contrast(1.03)}
+.tile::after{opacity:.16}

@@ -218,8 +218,9 @@ alone cannot detect wrap points. It re-runs on resize and after fonts load.
 
 ## Gallery tint
 
-Tiles rest as a **blue duotone** (`grayscale(.9)` + a `mix-blend-mode: color` overlay of
-`--blue` at .5) and lift to full colour on hover. This is deliberately *not* removed under
+Tiles rest with a **light blue tone** (`grayscale(.4) brightness(.9)` + a `mix-blend-mode: color`
+overlay of `--blue` at .16 — a full duotone at .5 was tried and was far too heavy) and lift to full
+colour on hover. This is deliberately *not* removed under
 `prefers-reduced-motion` — a static tint is not motion (an earlier rule did strip it there, which
 is why the tint "disappeared" for some viewers).
 
