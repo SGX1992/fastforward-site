@@ -380,3 +380,14 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   (`rgb(0,255,215)`), because the palette is applied at runtime and is not in the
   stylesheets.
 - Logo files are white-on-transparent PNGs; they only read against a dark surface.
+
+## Social preview & favicon
+
+- `assets/img/og-hero.jpg` (1200×630) is a real screenshot of the hero, rendered with headless Chrome
+  from a local copy of the site with the rotating kicker city pinned visible (`.rot__w{opacity:1;transform:none}`),
+  at 1200×630 @2x, then downsampled with `sips`. Re-render after any hero change:
+  `Google Chrome --headless=new --window-size=1200,630 --force-device-scale-factor=2 --virtual-time-budget=9000 --screenshot=out.png file://…/index.html`
+  (the headless process does not exit on its own; kill it once the file exists).
+- Favicon set is the white FastForward mark on `#0e0e0e`: `favicon.ico` (16/32/48, PNG entries), `favicon-32.png`,
+  `favicon-16.png`, `apple-touch-icon.png` (180), `icon-192.png` / `icon-512.png` via `site.webmanifest`.
+  Source: `assets/img/2Group-1410103505.png` rendered at 360px inside a 512px square.
