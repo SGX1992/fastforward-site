@@ -1180,3 +1180,18 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .trust__wall::after{display:none}
 .trust__panel,.trust__wall:hover .trust__panel{opacity:.9}
 @media(max-width:720px){.trust__wall{gap:0}}
+
+/* KICKER CITY — sit on the same baseline as the words before it.
+   inline-flex + vertical-align:middle centred a 1em box on the x-height, ~2px low.
+   clip-path replaces overflow:hidden because overflow moves an inline-block's baseline
+   to its bottom edge; the slide still hides fully (travel = the box's own height). */
+.rot{
+  display:inline-block;vertical-align:baseline;height:auto;line-height:inherit;
+  overflow:visible;clip-path:inset(0 -.1em);padding:0;align-items:normal;justify-content:normal;
+}
+.rot__w{display:inline-block;line-height:inherit;vertical-align:baseline}
+
+/* MARKS — drawn behind the letters, with a smooth in-and-out */
+.mark{z-index:0}
+.mark svg{z-index:-1}
+.is-drawn .mark svg{animation:wipe .95s cubic-bezier(.45,0,.2,1) forwards;animation-delay:var(--d,.5s)}
