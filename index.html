@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=56">
+<link rel="stylesheet" href="assets/css/style.css?v=57">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -132,6 +132,27 @@
         <li style="--c:5" data-tz="America/New_York"><a class="city" href="https://www.ddxconference.com/newyork" target="_blank" rel="noopener" aria-label="DDX New York edition"><span class="city__icon"><svg class="ico-pin" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"/></svg><svg class="ico-flag" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><mask id="SVGuywqVbel"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#SVGuywqVbel)"><path fill="#eee" d="M256 0h256v64l-32 32l32 32v64l-32 32l32 32v64l-32 32l32 32v64l-256 32L0 448v-64l32-32l-32-32v-64z"/><path fill="#d80027" d="M224 64h288v64H224Zm0 128h288v64H256ZM0 320h512v64H0Zm0 128h512v64H0Z"/><path fill="#0052b4" d="M0 0h256v256H0Z"/><path fill="#eee" d="m187 243l57-41h-70l57 41l-22-67zm-81 0l57-41H93l57 41l-22-67zm-81 0l57-41H12l57 41l-22-67zm162-81l57-41h-70l57 41l-22-67zm-81 0l57-41H93l57 41l-22-67zm-81 0l57-41H12l57 41l-22-67Zm162-82l57-41h-70l57 41l-22-67Zm-81 0l57-41H93l57 41l-22-67zm-81 0l57-41H12l57 41l-22-67Z"/></g></svg></span><span class="city__name">New York</span><time class="city__time" aria-label="local time"></time></a></li>
         <li style="--c:6" data-tz="America/Los_Angeles"><a class="city" href="https://www.ddxconference.com/sandiego" target="_blank" rel="noopener" aria-label="DDX San Diego edition"><span class="city__icon"><svg class="ico-pin" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 18l6-6l-6-6"/></svg><svg class="ico-flag" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><mask id="SVGuywqVbel"><circle cx="256" cy="256" r="256" fill="#fff"/></mask><g mask="url(#SVGuywqVbel)"><path fill="#eee" d="M256 0h256v64l-32 32l32 32v64l-32 32l32 32v64l-32 32l32 32v64l-256 32L0 448v-64l32-32l-32-32v-64z"/><path fill="#d80027" d="M224 64h288v64H224Zm0 128h288v64H256ZM0 320h512v64H0Zm0 128h512v64H0Z"/><path fill="#0052b4" d="M0 0h256v256H0Z"/><path fill="#eee" d="m187 243l57-41h-70l57 41l-22-67zm-81 0l57-41H93l57 41l-22-67zm-81 0l57-41H12l57 41l-22-67zm162-81l57-41h-70l57 41l-22-67zm-81 0l57-41H93l57 41l-22-67zm-81 0l57-41H12l57 41l-22-67Zm162-82l57-41h-70l57 41l-22-67Zm-81 0l57-41H93l57 41l-22-67zm-81 0l57-41H12l57 41l-22-67Z"/></g></svg></span><span class="city__name">San Diego</span><time class="city__time" aria-label="local time"></time></a></li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TRUST =======================
+     Who joins DDX. The two logo walls are the composites DDX itself uses
+     (white marks on black); screen-blended so the black merges into the page. -->
+<section class="section trust" id="trust">
+  <div class="wrap">
+    <div class="head head--wide head--center">
+      <div class="eyebrow">Who joins DDX</div>
+      <h2>Trusted by top design &amp; innovation teams around the world.</h2>
+      <p>People from these companies repeatedly joined DDX.</p>
+    </div>
+    <div class="trust__wall">
+      <figure class="trust__panel">
+        <img src="assets/img/ddx-companies-a.jpg" width="1744" height="964" loading="lazy" decoding="async" alt="Adobe, Apple, NVIDIA, Google, Amazon, Salesforce, EA, Visa, HP, Deloitte, Forbes, Allianz, Volkswagen, Siemens, Intel, US Bank, Zalando, Cisco, Walt Disney, American Airlines, Shopify, Publicis Sapient">
+      </figure>
+      <figure class="trust__panel">
+        <img src="assets/img/ddx-companies-b.jpg" width="1744" height="964" loading="lazy" decoding="async" alt="Microsoft, Meta, BMW, Bosch, SAP, Dell Technologies, Edenspiekermann, Appsfactory, Sony, Nike, JPMorgan Chase, Bank of America, Stripe, Emirates NBD, GE Aerospace, The New York Times, Marc O'Polo, Toyota">
+      </figure>
     </div>
   </div>
 </section>
@@ -750,7 +771,7 @@
   }
 
   /* ---------- tag every animatable element, indexed within its section ---------- */
-  var SEL = '.eyebrow, h2, h3, p, blockquote, .btn, .metric, .contact__meta, .event__hero, .reel__frame, .ex, .ed';
+  var SEL = '.eyebrow, h2, h3, p, blockquote, .btn, .metric, .contact__meta, .event__hero, .reel__frame, .ex, .ed, .trust__panel';
   [].forEach.call(document.querySelectorAll('main > section:not(.hero)'), function(sec){
     var n = 0;
     [].forEach.call(sec.querySelectorAll(SEL), function(el){
@@ -780,6 +801,16 @@
     Array.prototype.forEach.call(items, function(el){ io.observe(el); });
   }
 })();
+
+  // TRUST — a soft accent spotlight follows the cursor over the logo walls
+  (function(){
+    var wall = document.querySelector('.trust__wall'); if (!wall) return;
+    wall.addEventListener('mousemove', function(e){
+      var r = wall.getBoundingClientRect();
+      wall.style.setProperty('--sx', (e.clientX - r.left) + 'px');
+      wall.style.setProperty('--sy', (e.clientY - r.top) + 'px');
+    });
+  })();
 </script>
 </body>
 </html>

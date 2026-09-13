@@ -1123,3 +1123,51 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* kicker city: no chip — plain accent text, still pulsing by opacity */
 .rot{background:transparent;padding:0;border-radius:0;color:var(--accent);min-width:9.6ch;justify-content:flex-start}
 .rot__w{color:var(--accent)}
+
+
+/* ============================================================
+   TRUST — who joins DDX (two logo composites from ddxconference.com)
+   ============================================================ */
+.trust{border-top:1px solid var(--line-soft)}
+.head--center{margin-inline:auto;text-align:center}
+.head--center h2,.head--center p{margin-inline:auto}
+.head--center .eyebrow{justify-content:center}
+.trust__wall{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,3vw,40px);--sx:50%;--sy:50%}
+.trust__panel{margin:0;position:relative}
+.trust__panel img{display:block;width:100%;height:auto;mix-blend-mode:screen;opacity:.82;transition:opacity .6s var(--ease)}
+.trust__wall:hover .trust__panel img{opacity:1}
+/* reveal: each wall wipes in left to right, the second a beat later */
+.trust__panel[data-rv]{
+  opacity:1;transform:none;
+  -webkit-mask:linear-gradient(90deg,#000 45%,transparent 60%) 100% 0/280% 100% no-repeat;
+          mask:linear-gradient(90deg,#000 45%,transparent 60%) 100% 0/280% 100% no-repeat;
+  transition:-webkit-mask-position 1.6s var(--ease),mask-position 1.6s var(--ease);
+  transition-delay:calc(var(--n,0) * .16s);
+}
+.trust__panel[data-rv].is-in{-webkit-mask-position:0 0;mask-position:0 0}
+/* cursor spotlight, screen-blended so it lifts the marks rather than painting over them */
+.trust__wall::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(340px circle at var(--sx) var(--sy),rgba(0,255,215,.18),transparent 70%);
+  mix-blend-mode:screen;opacity:0;transition:opacity .5s var(--ease);
+}
+.trust__wall:hover::after{opacity:1}
+@media(max-width:720px){
+  .trust__wall{grid-template-columns:1fr;gap:0}
+  .trust__panel img{opacity:.9}
+}
+@media(prefers-reduced-motion:reduce){
+  .trust__panel[data-rv]{-webkit-mask:none;mask:none}
+  .trust__wall::after{display:none}
+}
+/* trust: blend on the masked figure itself (the mask isolates it, so an img blend
+   inside would only meet a transparent group); centred head gets a wider measure */
+.trust__panel{mix-blend-mode:screen;opacity:.82;transition:opacity .6s var(--ease),-webkit-mask-position 1.6s var(--ease),mask-position 1.6s var(--ease)}
+.trust__panel img{mix-blend-mode:normal;opacity:1;transition:none}
+.trust__wall:hover .trust__panel{opacity:1}
+.trust__panel[data-rv]{transition:opacity .6s var(--ease),-webkit-mask-position 1.6s var(--ease),mask-position 1.6s var(--ease)}
+.head--center.head--wide h2{max-width:32ch}
+@media(max-width:720px){.trust__panel{opacity:.9}}
+/* centred head: the generic .head is capped at 64ch, which forced four lines here */
+.head--center{max-width:min(100%,1120px)}
+.head--center.head--wide h2{max-width:36ch;text-wrap:balance}
