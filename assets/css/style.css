@@ -1198,14 +1198,8 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 
 
 /* ============================================================
-   SCROLL VELOCITY — blocks stretch and lean with scroll speed (JS sets --st/--sk on :root),
-   composed with the parallax offset so both effects share one transform.
+   SCROLL VELOCITY — JS writes an inline transform on a few light text blocks (.stretch);
+   nothing here animates via custom properties (a :root var change recalcs the whole page).
    ============================================================ */
-.stretch,.stretch[data-rv],.stretch[data-rv].is-in{
-  transform:translate3d(0,var(--py,0%),0) scaleY(calc(1 + var(--st,0))) skewY(var(--sk,0deg));
-  transform-origin:50% 50%;
-}
-.hero__inner.stretch{transform-origin:50% 100%}          /* the hero grows away from its baseline */
-@media(prefers-reduced-motion:reduce){
-  .stretch,.stretch[data-rv],.stretch[data-rv].is-in{transform:none !important}
-}
+.stretch{transform-origin:50% 50%}
+.hero__inner.stretch{transform-origin:50% 100%}
