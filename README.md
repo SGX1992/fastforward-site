@@ -404,3 +404,15 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   (`--sx/--sy` set in JS) is a screen-blended accent radial. Both off under reduced motion. Single column under 720px.
 - Centred head variant `.head--center` lifts the generic 64ch container cap so the headline sits on two lines.
 - To update logos: replace the two JPGs (keep black background) — nothing else to change.
+
+## Scroll velocity stretch + layered parallax (2026-09-13)
+
+- `stretchTick()` in the inline script smooths scroll speed (px/frame) and writes `--st` (0 … .075, extra height)
+  and `--sk` (±1.4°, lean) on `:root`; the loop runs only while scrolling/settling and resets both to 0.
+- `.stretch` is added by JS to blocks that carry **no transform transition** (hero inner, `.head`, metrics, gallery
+  columns, `.ddxshots`, `.trust__wall`, `.explore__grid`, `.event__hero`, `.editions`, `.jobs__grid`). Never add it
+  to `[data-rv]` leaves like `.ex`, `.metric`, `.ed`, `.reel__frame` — their reveal transition would lag the effect ~1s.
+- One rule composes both effects: `translate3d(0,var(--py)) scaleY(1+var(--st)) skewY(var(--sk))`; parallax `--py`
+  still comes from the existing `[data-px]` loop. Extra `data-px` layers are assigned in JS with alternating signs
+  (gallery columns 6/-5/7, DDX shots 6/-4/5/-6, logo wall 4, editions 3, mission glow 10, contact bg 6, hero inner -12).
+- All of it is off under `prefers-reduced-motion`. No `will-change` anywhere (it broke gallery painting before).
