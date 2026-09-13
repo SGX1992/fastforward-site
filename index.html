@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=61">
+<link rel="stylesheet" href="assets/css/style.css?v=62">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -749,6 +749,7 @@
   var root = document.documentElement, lastY = window.scrollY, vel = 0, stretching = false;
   function stretchTick(){
     var y = window.scrollY, dy = y - lastY; lastY = y;
+    dy = Math.max(-90, Math.min(90, dy));           // a jump (anchor, page-down, scrollbar drag) ramps instead of snapping
     vel += (dy - vel) * 0.16;                       // smoothed px/frame
     var st = Math.min(Math.abs(vel) * 0.0011, 0.075); // up to +7.5% taller
     var sk = Math.max(-1.4, Math.min(1.4, vel * 0.011)); // up to ±1.4° of lean
@@ -757,6 +758,9 @@
     if (Math.abs(vel) > 0.08 || dy !== 0) requestAnimationFrame(stretchTick);
     else { stretching = false; root.style.setProperty('--st', '0'); root.style.setProperty('--sk', '0deg'); }
   }
+  document.addEventListener('visibilitychange', function(){   // frames pause in a hidden tab: never resume from a stale delta
+    lastY = window.scrollY; vel = 0; root.style.setProperty('--st', '0'); root.style.setProperty('--sk', '0deg');
+  });
   function onScroll(){
     if (!ticking) { ticking = true; requestAnimationFrame(frame); }
     if (!reduce && !stretching) { stretching = true; requestAnimationFrame(stretchTick); }
