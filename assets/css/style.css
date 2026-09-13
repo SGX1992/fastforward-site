@@ -1174,3 +1174,9 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* trust: JPEG blacks are not a true 0 and screen-blend lifts them a hair above the page —
    a touch of contrast crushes them to black; the white marks are already clipped at 255 */
 .trust__panel img{filter:contrast(1.22)}
+
+/* trust: no mouse effects; walls sit flush so the composites' own margins set the spacing */
+.trust__wall{gap:0}
+.trust__wall::after{display:none}
+.trust__panel,.trust__wall:hover .trust__panel{opacity:.9}
+@media(max-width:720px){.trust__wall{gap:0}}

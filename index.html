@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=58">
+<link rel="stylesheet" href="assets/css/style.css?v=59">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -802,15 +802,6 @@
   }
 })();
 
-  // TRUST — a soft accent spotlight follows the cursor over the logo walls
-  (function(){
-    var wall = document.querySelector('.trust__wall'); if (!wall) return;
-    wall.addEventListener('mousemove', function(e){
-      var r = wall.getBoundingClientRect();
-      wall.style.setProperty('--sx', (e.clientX - r.left) + 'px');
-      wall.style.setProperty('--sy', (e.clientY - r.top) + 'px');
-    });
-  })();
 </script>
 </body>
 </html>
