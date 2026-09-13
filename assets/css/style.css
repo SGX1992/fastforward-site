@@ -1171,3 +1171,6 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 /* centred head: the generic .head is capped at 64ch, which forced four lines here */
 .head--center{max-width:min(100%,1120px)}
 .head--center.head--wide h2{max-width:36ch;text-wrap:balance}
+/* trust: JPEG blacks are not a true 0 and screen-blend lifts them a hair above the page —
+   a touch of contrast crushes them to black; the white marks are already clipped at 255 */
+.trust__panel img{filter:contrast(1.22)}
