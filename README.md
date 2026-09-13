@@ -393,3 +393,14 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   Source: `assets/img/2Group-1410103505.png` rendered at 360px inside a 512px square.
 
 - Footer credit removed 2026-09-13 on request ("City photography via Unsplash."); the Unsplash licence does not require attribution. Photo IDs stay documented above.
+
+## "Trusted by" logo band (`.trust`, between Who-we-are and Explorations)
+
+- Copy mirrors ddxconference.com: "Trusted by top design & innovation teams around the world." / "People from these companies repeatedly joined DDX."
+- Logos are the two composites DDX itself serves (`assets/img/ddx-companies-a.jpg`, `-b.jpg`, 1744×964, white marks on pure black).
+  They are `mix-blend-mode:screen` on the **figure** (not the img — the figure carries the reveal mask, which isolates it,
+  so an img-level blend would only meet a transparent group and paint the black boxes).
+- Reveal: each wall wipes in left→right via an animated `mask-position`; the second wall a beat later. Cursor spotlight
+  (`--sx/--sy` set in JS) is a screen-blended accent radial. Both off under reduced motion. Single column under 720px.
+- Centred head variant `.head--center` lifts the generic 64ch container cap so the headline sits on two lines.
+- To update logos: replace the two JPGs (keep black background) — nothing else to change.
