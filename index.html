@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=63">
+<link rel="stylesheet" href="assets/css/style.css?v=64">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -722,11 +722,20 @@
     var amp = Math.max(3, Math.min(8, Math.abs(sp) / 12)) * (sp < 0 ? -1 : 1);
     [].forEach.call(col.querySelectorAll('.tile img, .tile video'), function(m){ tiles.push({m:m, amp:amp}); });
   });
+  var navH = nav.offsetHeight;
+  var lightZones = [].slice.call(document.querySelectorAll('.contact, .foot'));
+  window.addEventListener('resize', function(){ navH = nav.offsetHeight; });
   var ticking = false;
   function frame(){
     ticking = false;
     var vh = window.innerHeight;
     nav.classList.toggle('is-stuck', window.scrollY > 24);
+    var lit = false, band = navH * 0.55;            // swap as the white edge crosses the bar's middle
+    for (var q = 0; q < lightZones.length; q++) {
+      var lr = lightZones[q].getBoundingClientRect();
+      if (lr.top <= band && lr.bottom >= band) { lit = true; break; }
+    }
+    nav.classList.toggle('is-light', lit);
     var max = document.documentElement.scrollHeight - vh;
     prog.style.setProperty('--p', max > 0 ? (window.scrollY / max).toFixed(4) : 0);
     if (reduce) return;

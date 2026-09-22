@@ -1203,3 +1203,27 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
    ============================================================ */
 .stretch{transform-origin:50% 50%}
 .hero__inner.stretch{transform-origin:50% 100%}
+
+
+/* ============================================================
+   TOPBAR — the page must not show through it.
+   On phones the bar is opaque (a 50% bar let every section scroll visibly
+   under it, and over the white contact/footer it turned into a grey smear);
+   everywhere it inverts to white while a white section is behind it.
+   ============================================================ */
+.nav__mark img{transition:filter .4s var(--ease)}
+.nav.is-light{background:rgba(255,255,255,.82);border-bottom-color:rgba(6,17,15,.12)}
+.nav.is-light .nav__mark img{filter:brightness(0)}
+.nav.is-light .nav__cta{color:var(--on-accent);border-color:rgba(6,17,15,.22)}
+.nav.is-light .nav__cta--primary,
+.nav__actions .nav.is-light .nav__cta--primary{background:var(--on-accent);border-color:var(--on-accent);color:var(--accent);box-shadow:none}
+.nav.is-light .nav__prog{background:var(--on-accent)}
+
+@media(max-width:760px){
+  .nav,.nav.is-stuck{background:#0E0E0E;backdrop-filter:none;-webkit-backdrop-filter:none}
+  .nav.is-light,.nav.is-light.is-stuck{background:#fff}
+}
+
+/* the white footer has to continue past the end of the document, or iOS
+   rubber-banding at the bottom reveals the dark page background beneath it */
+.foot{box-shadow:0 100vh 0 #fff}
