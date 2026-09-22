@@ -397,13 +397,16 @@ descriptions). The mission paragraph is close to verbatim from Notion.
 ## "Trusted by" logo band (`.trust`, between Who-we-are and Explorations)
 
 - Copy mirrors ddxconference.com: "Trusted by top design & innovation teams around the world." / "People from these companies repeatedly joined DDX."
-- Logos are the two composites DDX itself serves (`assets/img/ddx-companies-a.jpg`, `-b.jpg`, 1744×964, white marks on pure black).
-  They are `mix-blend-mode:screen` on the **figure** (not the img — the figure carries the reveal mask, which isolates it,
-  so an img-level blend would only meet a transparent group and paint the black boxes).
-- Reveal: each wall wipes in left→right via an animated `mask-position`; the second wall a beat later. Cursor spotlight
-  (`--sx/--sy` set in JS) is a screen-blended accent radial. Both off under reduced motion. Single column under 720px.
-- Centred head variant `.head--center` lifts the generic 64ch container cap so the headline sits on two lines.
-- To update logos: replace the two JPGs (keep black background) — nothing else to change.
+- Logos: `assets/img/ddx-companies-a.png` / `-b.png` — **transparent PNGs**, white marks with `alpha = the original
+  luminance`. Mathematically identical to screen-blending the DDX JPEGs, but with no blend mode, so it cannot break.
+  (It did break: `mix-blend-mode:screen` collapsed in Safari once the panel also carried a reveal mask, and the
+  composites' black boxes came back. Do not reintroduce blend modes or the contrast hack here.)
+- Regenerating from a new DDX composite: load the JPEG into a canvas in headless Chrome, set every pixel to white
+  with `alpha = max(r,g,b)/255` lifted by a 0.06 black point, then screenshot the canvas at natural size with
+  `--default-background-color=00000000 --allow-file-access-from-files`. Recipe in the session notes.
+- Reveal: opacity fade + left-to-right `clip-path` wipe, .18s stagger between the two walls. No mask (that is what
+  made the blend fragile), no transform, no `data-px`. Off under reduced motion. Walls sit flush (`gap:0`); the
+  spacing in the middle comes from the composites' own margins. Single column under 720px.
 
 ## Scroll velocity stretch + layered parallax (2026-09-13, perf-fixed same day)
 
@@ -418,3 +421,13 @@ descriptions). The mission paragraph is close to verbatim from Notion.
 - Parallax layers (`data-px`, alternating signs for depth): gallery columns 6/-5/7, DDX shots 6/-4/5/-6,
   editions 3, mission glow 10, contact bg 6, hero inner -12. The logo wall carries none.
 - No `will-change` anywhere (it broke gallery painting before).
+
+## Topbar over the white sections (2026-09-22)
+
+- The bar is `position:fixed` and was translucent everywhere, so on phones every section was visible scrolling
+  under it, and over the white contact/footer it turned into a grey smear. Now: **opaque `#0E0E0E` under 760px**
+  (blur off — cheaper too), and everywhere `.nav.is-light` inverts it to white with a black mark while a white
+  section is behind it. The toggle lives in the existing rAF `frame()` loop: a `.contact`/`.foot` rect crossing
+  `navH * 0.55` flips the class, with a .4s cross-fade.
+- `.foot{box-shadow:0 100vh 0 #fff}` continues the white past the end of the document, so iOS rubber-banding at
+  the bottom no longer reveals the dark page background beneath the white footer.
