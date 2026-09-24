@@ -1251,3 +1251,17 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   .trust__panel[data-rv]{opacity:1 !important;clip-path:none !important}
 }
+
+
+/* ============================================================
+   PARALLAX — every [data-px] layer actually moves.
+   The JS has been writing --py on these for a while, but only .hero__field and
+   the DDX hero image ever consumed it, so most layers sat still. One generic
+   rule applies it; the two below re-add the scale that gives them room to travel.
+   Inline transforms from .stretch win while scrolling and compose --py themselves.
+   ============================================================ */
+[data-px]{transform:translate3d(0,var(--py,0%),0)}
+.hero__field{inset:-18% 0}                      /* overhang, so the drift never exposes an edge */
+.event__hero > img{transform:translate3d(0,var(--py,0%),0) scale(1.3)}
+.tour__img{transform:scale(1.18)}
+.tour__img.is-on{transform:scale(1.28)}

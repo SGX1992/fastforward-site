@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=65">
+<link rel="stylesheet" href="assets/css/style.css?v=66">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -62,7 +62,7 @@
       <img src="assets/img/6308cf0d598aa3d11e92d14c_grid3-1-1.jpg" alt="">
     </div>
     <div class="hero__scrim"></div>
-    <div class="hero__field" data-px="7"></div>
+    <div class="hero__field" data-px="12"></div>
   </div>
 
   <div class="wrap hero__inner">
@@ -310,7 +310,7 @@
 
     <div class="event__hero">
       <!-- swap this one file to change the DDX backdrop; nothing else needs editing -->
-        <img src="assets/img/ddx-hero.jpg" alt="A speaker on stage at a DDX conference edition" loading="lazy" data-px="8">
+        <img src="assets/img/ddx-hero.jpg" alt="A speaker on stage at a DDX conference edition" loading="lazy" data-px="14">
       <div class="event__hero-in">
         <img class="ddx" src="assets/img/22Group-1171275840.png" alt="DDX">
         <h3>Where innovation meets people.</h3>
@@ -705,12 +705,13 @@
   (function(){
     function px(sel, amps){ var i=0; [].forEach.call(document.querySelectorAll(sel), function(el){
       if (!el.hasAttribute('data-px')) el.setAttribute('data-px', amps[i % amps.length]); i++; }); }
-    px('.hero__inner', [-12]);
-    px('.gallery__col', [6, -5, 7]);
-    px('.ddxshots .tile', [6, -4, 5, -6]);
-    px('.editions', [3]);
-    px('.mission__glow', [10]);
-    px('.contact__bg', [6]);
+    px('.hero__inner', [-18]);
+    if (window.innerWidth > 760) px('.gallery__col', [5, -4, 6]);  // tall columns: heavy, and they gape on a phone
+    px('.ddxshots .tile', [12, -9, 10, -13]);
+    px('.trust__wall', [6]);
+    px('.editions', [8]);
+    px('.mission__glow', [24]);
+    px('.contact__bg', [5]);
     // blocks that stretch and skew with scroll velocity (none of these carry a transform transition)
     // light text blocks only: no media, no blend/mask layers (a transform would isolate the blend)
     if (fine && !reduce) [].forEach.call(document.querySelectorAll('.hero__inner, .head, .metrics, .explore__grid, .editions, .jobs__grid'), function(el){ el.classList.add('stretch'); });
@@ -719,7 +720,7 @@
   var tiles = [];
   [].forEach.call(document.querySelectorAll('.gallery__col'), function(col){
     var sp  = parseFloat(col.getAttribute('data-speed')) || 40;
-    var amp = Math.max(3, Math.min(8, Math.abs(sp) / 12)) * (sp < 0 ? -1 : 1);
+    var amp = Math.max(6, Math.min(15, Math.abs(sp) / 6)) * (sp < 0 ? -1 : 1);
     [].forEach.call(col.querySelectorAll('.tile img, .tile video'), function(m){ tiles.push({m:m, amp:amp}); });
   });
   var navH = nav.offsetHeight;
