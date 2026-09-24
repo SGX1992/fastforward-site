@@ -418,8 +418,14 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   `.trust__wall`, `.event__hero`) — a transform on the logo wall isolates its screen blend (black boxes return),
   and on the gallery it is expensive. Never drive this via a `:root` custom property: that recalcs the whole page
   every frame and made the site crawl.
-- Parallax layers (`data-px`, alternating signs for depth): gallery columns 6/-5/7, DDX shots 6/-4/5/-6,
-  editions 3, mission glow 10, contact bg 6, hero inner -12. The logo wall carries none.
+- Parallax layers (`data-px`, % of the element's own height, alternating signs for depth): hero inner -18,
+  hero field 12, gallery columns 5/-4/6 (desktop only — tall and heavy), DDX shots 12/-9/10/-13, DDX hero image 14,
+  logo wall 6, editions 8, mission glow 24, contact bg 5. In-frame travel inside gallery tiles is `--ty`,
+  `clamp(6, |data-speed|/6, 15)` — the images are 120% tall *and* `scale(1.16)`, so there is ~16% of slack.
+- **`[data-px]{transform:translate3d(0,var(--py,0%),0)}` is what makes any of it visible.** Until 2026-09-24 only
+  `.hero__field` and `.event__hero > img` had a rule consuming `--py`, so every layer added later set the variable
+  and never moved. If a new layer looks static, check that a rule consumes `--py` before touching the amplitude.
+  Layers that need room to travel carry a scale: DDX hero image 1.3, `.tour__img` 1.18/1.28, hero field `inset:-18% 0`.
 - No `will-change` anywhere (it broke gallery painting before).
 
 ## Topbar over the white sections (2026-09-22)
