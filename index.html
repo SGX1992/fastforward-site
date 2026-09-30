@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=66">
+<link rel="stylesheet" href="assets/css/style.css?v=67">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -88,7 +88,7 @@
         </svg>
       </span>.
     </h1>
-    <p class="hero__sub">We know where human and technology meet next</p>
+    <p class="hero__sub">Over 10 years of award-winning creative work</p>
   </div>
 
   <div class="hero__scroll"><span>Scroll</span><i></i></div>
@@ -373,48 +373,6 @@
     <div class="eyebrow">Mission</div>
     <blockquote>We <em>explore the future</em> &mdash; and turn breakthroughs into experiences people actually want.</blockquote>
     <p class="mission__wide">We make technological breakthroughs accessible and turn them into joyful product and brand experiences so people have better lives. We fast-forward to potential futures of businesses, and we partner with the strongest and most ambitious startups and companies in order to drive positive impact and accelerate the future for the better.</p>
-  </div>
-</section>
-
-<!-- ======================= CAREERS =======================
-     Two components: one live role, one open application. -->
-<section class="section jobs" id="careers">
-  <div class="wrap">
-    <div class="head">
-      <div class="eyebrow">Careers</div>
-      <h2>Come build it with us.</h2>
-    </div>
-
-    <div class="jobs__grid">
-
-      <article class="job">
-        <ul class="job__meta">
-          <li>Dubai</li>
-          <li>Full-time</li>
-          <li>On-site</li>
-        </ul>
-        <h3>Graphic Designer</h3>
-        <p>Brand and campaign design across our own ventures and our partner work &mdash; from conference identity through to product surfaces. On-site with the team in Dubai.</p>
-        <a class="btn" href="https://www.linkedin.com/jobs/view/4457243334/" target="_blank" rel="noopener">
-          View the role
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </article>
-
-      <article class="job job--open">
-        <ul class="job__meta">
-          <li>Any discipline</li>
-          <li>Always open</li>
-        </ul>
-        <h3>Open application</h3>
-        <p>Nothing listed that fits? Tell us what you would bring. We hire for range and curiosity rather than for a job title &mdash; show us the thinking behind the work.</p>
-        <a class="btn" href="mailto:office@fastforward.global?subject=Open%20application">
-          Send an open application
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-      </article>
-
-    </div>
   </div>
 </section>
 
@@ -714,7 +672,7 @@
     px('.contact__bg', [5]);
     // blocks that stretch and skew with scroll velocity (none of these carry a transform transition)
     // light text blocks only: no media, no blend/mask layers (a transform would isolate the blend)
-    if (fine && !reduce) [].forEach.call(document.querySelectorAll('.hero__inner, .head, .metrics, .explore__grid, .editions, .jobs__grid'), function(el){ el.classList.add('stretch'); });
+    if (fine && !reduce) [].forEach.call(document.querySelectorAll('.hero__inner, .head, .metrics, .explore__grid, .editions'), function(el){ el.classList.add('stretch'); });
   })();
   var pxEls = [].slice.call(document.querySelectorAll('[data-px]'));
   var tiles = [];

@@ -251,28 +251,12 @@ goes ragged again.
 Prefer MP4 over GIF for anything longer than a second or two: the GIFs in the portfolio
 folder run 1–17MB each, where the same clip as h264 is a fraction of that.
 
-## Careers
+## Careers (removed 2026-09-30)
 
-Two components in one band, sitting between the mission and the contact CTA:
-
-| | Left | Right |
-| --- | --- | --- |
-| Card | Live role | Open application |
-| Style | solid | dashed, unfilled |
-| Action | posting URL, new tab | `mailto:` with a pre-filled subject |
-
-The live role links to its LinkedIn posting. Roles are tracked in the **Open Roles**
-Notion database (under the FastForward Global page). Note the site is a **static page and
-does not read from Notion** — when a role opens or closes there, update the card in
-`index.html` to match. `Status` is the source of truth; only *Open* roles belong on the
-site, and `Summary` is written to be used verbatim as the card copy.
-
-"Initiativbewerbung" is rendered as **"Open application"**, the usual English careers term
-("Speculative application" is the UK variant if you prefer it).
-
-Card heights are matched by flex, with the gap on the paragraph and `margin-top:auto` on
-the button, so both buttons sit on one baseline however long the copy runs — don't set a
-fixed height.
+The careers section (`.jobs` / `#careers`, one Dubai Graphic Designer card plus an open
+application) was removed from the page on request, along with its CSS. The Notion "Open Roles"
+database under the FastForward Global page still exists and was never read by the site.
+To bring careers back, rebuild the section — the markup is in git history before that commit.
 
 ## Colour surfaces
 
@@ -331,7 +315,7 @@ narrative order is deliberate and worth keeping if you rewrite:
 3. **From the DDX stages** — four recurring themes. This is the thought-leadership core.
 4. **In practice / Along the way** — the showreel and gallery, positioned as *evidence*
    of the foresight rather than the pitch.
-5. **DDX** → **Mission** → **Careers** → **Next step**.
+5. **DDX** → **Mission** → **Next step**.
 
 **Routing.** Every primary action goes to ddxconference.com: the nav's accent button,
 the explorations button, and the contact section's "Explore DDX". The email is demoted to
@@ -413,7 +397,7 @@ descriptions). The mission paragraph is close to verbatim from Notion.
 - `stretchTick()` smooths scroll speed (px/frame, per-frame delta clamped to ±90 so jumps ramp) and writes an
   **inline transform** on the `.stretch` blocks: `translate3d(0,<its parallax %>,0) scaleY(1+st) skewY(sk)`,
   st ≤ .075, sk ≤ ±1.4°. It clears the inline transform when settled and on `visibilitychange`.
-- `.stretch` is only: hero inner, `.head`, `.metrics`, `.explore__grid`, `.editions`, `.jobs__grid` — and only on
+- `.stretch` is only: hero inner, `.head`, `.metrics`, `.explore__grid`, `.editions` — and only on
   fine pointers without reduced motion. **Never** on media/blend/mask layers (gallery columns, `.ddxshots`,
   `.trust__wall`, `.event__hero`) — a transform on the logo wall isolates its screen blend (black boxes return),
   and on the gallery it is expensive. Never drive this via a `:root` custom property: that recalcs the whole page

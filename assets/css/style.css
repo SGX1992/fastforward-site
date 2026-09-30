@@ -601,50 +601,6 @@ h2[data-rv],blockquote[data-rv]{transform:translateY(26px)}
 }
 
 /* ============================================================
-   CAREERS — one live role + one open application
-   ============================================================ */
-.jobs__grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:clamp(14px,1.8vw,24px);align-items:stretch;
-}
-@media(max-width:820px){ .jobs__grid{grid-template-columns:1fr} }
-
-.job{
-  display:flex;flex-direction:column;align-items:flex-start;
-  padding:clamp(26px,3.4vw,44px);
-  border:1px solid var(--line-soft);border-radius:16px;
-  background:var(--bg-card);
-  transition:border-color .45s var(--ease),background .45s var(--ease),transform .45s var(--ease);
-}
-.job:hover{border-color:rgba(0,255,215,.35);background:var(--bg-lift);transform:translateY(-4px)}
-
-/* the open application is the softer of the two — dashed, unfilled */
-.job--open{background:transparent;border-style:dashed}
-.job--open:hover{background:rgba(255,255,255,.02)}
-
-.job__meta{
-  list-style:none;margin:0 0 clamp(16px,2vw,22px);padding:0;
-  display:flex;flex-wrap:wrap;gap:8px;
-}
-.job__meta li{
-  font-family:var(--label);font-size:10px;letter-spacing:.15em;text-transform:uppercase;
-  color:var(--ink-mid);border:1px solid var(--line);border-radius:999px;padding:6px 12px;
-}
-.job--open .job__meta li{color:var(--ink-low)}
-
-.job h3{
-  font-size:clamp(1.5rem,2.6vw,2.15rem);font-weight:650;letter-spacing:-.032em;line-height:1.08;
-}
-.job p{
-  margin-top:14px;color:var(--ink-mid);font-size:1rem;line-height:1.7;max-width:44ch;
-}
-/* the gap lives on the paragraph; margin-top:auto pins the button to the bottom
-   so both cards' buttons align however long the copy runs */
-.job p{margin-bottom:clamp(24px,3vw,34px)}
-.job .btn{margin-top:auto}
-
-
-/* ============================================================
    REPOSITIONING — think tank first
    ============================================================ */
 
