@@ -1221,3 +1221,23 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .event__hero > img{transform:translate3d(0,var(--py,0%),0) scale(1.3)}
 .tour__img{transform:scale(1.18)}
 .tour__img.is-on{transform:scale(1.28)}
+
+
+/* ============================================================
+   GALLERY — a small caption under the heading, and a band that
+   starts and ends on a straight edge despite the column parallax.
+   The columns bleed 165px past the band at both ends and the band
+   clips them, so no column can ever leave a gap at the top or bottom.
+   Their travel is set in pixels (data-pxp) precisely so it stays
+   inside that bleed at every viewport size.
+   ============================================================ */
+[data-px],[data-pxp]{transform:translate3d(0,var(--py,0%),0)}
+.head .gallery__note{
+  margin-top:14px;font-family:var(--label);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-low,rgba(255,255,255,.45));
+  line-height:1.8;max-width:46ch;
+}
+@media(min-width:901px){
+  .gallery__grid{overflow:hidden}
+  .gallery__col{margin-block:-165px}
+}
