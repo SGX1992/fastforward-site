@@ -1246,3 +1246,22 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
   .gallery__grid{overflow:hidden}
   .gallery__col{margin-block:-105px}
 }
+
+
+/* ============================================================
+   GALLERY — the band dissolves at both ends instead of stopping
+   on a hard line. Two absolutely positioned overlays (not a mask:
+   a mask would isolate the layer, and that is what broke the logo
+   wall's blending). Absolutely positioned pseudo-elements are not
+   grid items, so the six-column layout is untouched.
+   The gradient names the background colour at both stops — a fade
+   to `transparent` goes through black in Safari.
+   ============================================================ */
+.gallery__grid{position:relative}
+.gallery__grid::before,
+.gallery__grid::after{
+  content:"";position:absolute;left:0;right:0;z-index:3;pointer-events:none;
+  height:clamp(70px,10vw,150px);
+}
+.gallery__grid::before{top:0;background:linear-gradient(180deg,rgba(14,14,14,1) 0%,rgba(14,14,14,.86) 38%,rgba(14,14,14,0) 100%)}
+.gallery__grid::after{bottom:0;background:linear-gradient(0deg,rgba(14,14,14,1) 0%,rgba(14,14,14,.86) 38%,rgba(14,14,14,0) 100%)}
