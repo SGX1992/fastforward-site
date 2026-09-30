@@ -392,6 +392,23 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   made the blend fragile), no transform, no `data-px`. Off under reduced motion. Walls sit flush (`gap:0`); the
   spacing in the middle comes from the composites' own margins. Single column under 720px.
 
+## Gallery (2026-09-30)
+
+- **Six columns, 36 tiles.** Every column carries the SAME multiset of aspect ratios
+  (`4/3, 3/4, 1/1, 16/9, 4/5, 3/2`) rotated by its index, so all six columns are exactly the
+  same height and the band cannot end ragged. Keep that rule when adding images: tiles per
+  column must stay equal and the ratio multiset identical.
+- Breakpoints use divisors of 6 so the arrangement is always a clean rectangle:
+  6 columns ≥1280px, 3 columns ≤1279, 2 columns ≤860. Never 4 or 5 — 6 divs would wrap ragged.
+- **Clean top and bottom edge:** at ≥1280 the grid is `overflow:hidden` and the columns carry
+  `margin-block:-105px`, so they bleed past the band at both ends and the band clips them to a
+  straight line. Column parallax is therefore set in PIXELS (`data-pxp`, amplitudes
+  80/-65/95/-75/88/-58) — every one stays inside that 105px bleed at any viewport size.
+  If you change an amplitude, keep |amp| < the bleed, or a column will pull a gap into the band.
+- Caption under the heading: `.gallery__note`, small uppercase label type.
+- 18 of the images came from the sebastiangier.com asset set (own material) on 2026-09-30,
+  copied into `assets/img/work-*` and resized to 1200px. Tiles are decorative (`alt=""`).
+
 ## Scroll velocity stretch + layered parallax (2026-09-13, perf-fixed same day)
 
 - `stretchTick()` smooths scroll speed (px/frame, per-frame delta clamped to ±90 so jumps ramp) and writes an
