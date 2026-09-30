@@ -1237,7 +1237,12 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
   text-transform:uppercase;color:var(--ink-low,rgba(255,255,255,.45));
   line-height:1.8;max-width:46ch;
 }
-@media(min-width:901px){
+/* six columns; 6 divides by 3 and 2, so every breakpoint stays a clean rectangle */
+.gallery__grid{grid-template-columns:repeat(6,1fr)}
+@media(max-width:1279px){ .gallery__grid{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:860px){ .gallery__grid{grid-template-columns:repeat(2,1fr)} }
+/* the band is clipped only where the columns actually parallax */
+@media(min-width:1280px){
   .gallery__grid{overflow:hidden}
-  .gallery__col{margin-block:-165px}
+  .gallery__col{margin-block:-105px}
 }
