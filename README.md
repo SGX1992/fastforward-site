@@ -392,22 +392,27 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   made the blend fragile), no transform, no `data-px`. Off under reduced motion. Walls sit flush (`gap:0`); the
   spacing in the middle comes from the composites' own margins. Single column under 720px.
 
-## Gallery (2026-09-30)
+## Gallery carousel (2026-10-03)
 
-- **Six columns, 36 tiles.** Every column carries the SAME multiset of aspect ratios
-  (`4/3, 3/4, 1/1, 16/9, 4/5, 3/2`) rotated by its index, so all six columns are exactly the
-  same height and the band cannot end ragged. Keep that rule when adding images: tiles per
-  column must stay equal and the ratio multiset identical.
-- Breakpoints use divisors of 6 so the arrangement is always a clean rectangle:
-  6 columns ≥1280px, 3 columns ≤1279, 2 columns ≤860. Never 4 or 5 — 6 divs would wrap ragged.
-- **Clean top and bottom edge:** at ≥1280 the grid is `overflow:hidden` and the columns carry
-  `margin-block:-105px`, so they bleed past the band at both ends and the band clips them to a
-  straight line. Column parallax is therefore set in PIXELS (`data-pxp`, amplitudes
-  80/-65/95/-75/88/-58) — every one stays inside that 105px bleed at any viewport size.
-  If you change an amplitude, keep |amp| < the bleed, or a column will pull a gap into the band.
-- Caption under the heading: `.gallery__note`, small uppercase label type.
-- 18 of the images came from the sebastiangier.com asset set (own material) on 2026-09-30,
-  copied into `assets/img/work-*` and resized to 1200px. Tiles are decorative (`alt=""`).
+Three rows that auto-scroll, the middle one against the other two. Each `.mq__track` holds its
+images **twice** and animates to `translateX(calc(-50% - gap/2))`, which lands exactly on the start
+of the second copy — that is what makes the loop seamless. Change the gap and that calc must follow.
+Hover pauses; `prefers-reduced-motion` turns each row into a plain horizontal scroller.
+Rows fade into the page at the left and right edges (overlay gradients, not a mask).
+
+- **74 images** in `assets/img/mq/`: the 36 creative-work tiles plus 38 DDX conference photographs,
+  interleaved so each row mixes both. All re-encoded to **480px tall, JPEG q62** — 6.5MB for the set,
+  avg 85KB. `website-1.gif` is left animated and is 1.8MB of that total. Regenerate with
+  `sips --resampleHeight 480` then `sips -s format jpeg -s formatOptions 62`, and **verify the output
+  dimensions** — sips silently skipped files in an earlier batch.
+- DDX photos come from `ddx-report-sandiego/assets/img/photos` and `ddx-report-miami/assets/img/photos`.
+  Four are deliberately excluded as stage shots of SG: `DSC09584`, `DSC09719`, `DSC6586`, `DSC6606`.
+  The 20 `carousel/DDX26-*-Recap-*.jpg` cards are social graphics with text and were left out.
+- The six-column grid is gone, and with it the column parallax, the `data-pxp` amplitudes and the
+  bleed/clip that kept its edges straight. `[data-px]{transform:...}` is still needed by the other
+  parallax layers. The `.gallery__col` loop left in the script is now an empty NodeList.
+- The Drive portfolio folder cannot be bulk-pulled: it is shared to lena@ only, so a plain download
+  returns a Google sign-in page, and the connector returns base64 through context (files are 1–76MB).
 
 ## Scroll velocity stretch + layered parallax (2026-09-13, perf-fixed same day)
 
