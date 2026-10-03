@@ -1223,13 +1223,13 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 .tour__img.is-on{transform:scale(1.28)}
 
 
-
-
 /* ============================================================
-   GALLERY CAROUSEL — three rows that scroll on their own, the middle
-   one against the others. Each track holds the images twice and shifts
-   by exactly one copy, so the loop is seamless. Hovering pauses it;
-   reduced motion turns it into a plain horizontal scroller.
+   GALLERY — a small caption under the heading, and a band that
+   starts and ends on a straight edge despite the column parallax.
+   The columns bleed 165px past the band at both ends and the band
+   clips them, so no column can ever leave a gap at the top or bottom.
+   Their travel is set in pixels (data-pxp) precisely so it stays
+   inside that bleed at every viewport size.
    ============================================================ */
 [data-px],[data-pxp]{transform:translate3d(0,var(--py,0%),0)}
 .head .gallery__note{
@@ -1237,22 +1237,31 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
   text-transform:uppercase;color:var(--ink-low,rgba(255,255,255,.45));
   line-height:1.8;max-width:46ch;
 }
-.gallery__rows{position:relative;--mqgap:14px}
-.mq{position:relative;overflow:hidden}
-.mq + .mq{margin-top:var(--mqgap)}
-.mq__track{display:flex;gap:var(--mqgap);width:max-content;animation:mqrun var(--dur,95s) linear infinite}
-.mq--rev .mq__track{animation-direction:reverse}
-.mq:hover .mq__track{animation-play-state:paused}
-@keyframes mqrun{from{transform:translate3d(0,0,0)}to{transform:translate3d(calc(-50% - (var(--mqgap) / 2)),0,0)}}
-.mqi{flex:0 0 auto;margin:0;height:clamp(132px,16vw,250px);border-radius:12px;overflow:hidden;background:rgba(255,255,255,.03)}
-.mqi img{height:100%;width:auto;display:block;filter:grayscale(.32) brightness(.9)}
-/* the rows fade out into the page at both ends */
-.gallery__rows::before,.gallery__rows::after{
-  content:"";position:absolute;top:0;bottom:0;width:clamp(40px,7vw,130px);z-index:3;pointer-events:none;
+/* six columns; 6 divides by 3 and 2, so every breakpoint stays a clean rectangle */
+.gallery__grid{grid-template-columns:repeat(6,1fr)}
+@media(max-width:1279px){ .gallery__grid{grid-template-columns:repeat(3,1fr)} }
+@media(max-width:860px){ .gallery__grid{grid-template-columns:repeat(2,1fr)} }
+/* the band is clipped only where the columns actually parallax */
+@media(min-width:1280px){
+  .gallery__grid{overflow:hidden}
+  .gallery__col{margin-block:-105px}
 }
-.gallery__rows::before{left:0;background:linear-gradient(90deg,rgba(14,14,14,1) 0%,rgba(14,14,14,0) 100%)}
-.gallery__rows::after{right:0;background:linear-gradient(270deg,rgba(14,14,14,1) 0%,rgba(14,14,14,0) 100%)}
-@media(prefers-reduced-motion:reduce){
-  .mq{overflow-x:auto}
-  .mq__track{animation:none}
+
+
+/* ============================================================
+   GALLERY — the band dissolves at both ends instead of stopping
+   on a hard line. Two absolutely positioned overlays (not a mask:
+   a mask would isolate the layer, and that is what broke the logo
+   wall's blending). Absolutely positioned pseudo-elements are not
+   grid items, so the six-column layout is untouched.
+   The gradient names the background colour at both stops — a fade
+   to `transparent` goes through black in Safari.
+   ============================================================ */
+.gallery__grid{position:relative}
+.gallery__grid::before,
+.gallery__grid::after{
+  content:"";position:absolute;left:0;right:0;z-index:3;pointer-events:none;
+  height:clamp(70px,10vw,150px);
 }
+.gallery__grid::before{top:0;background:linear-gradient(180deg,rgba(14,14,14,1) 0%,rgba(14,14,14,.86) 38%,rgba(14,14,14,0) 100%)}
+.gallery__grid::after{bottom:0;background:linear-gradient(0deg,rgba(14,14,14,1) 0%,rgba(14,14,14,.86) 38%,rgba(14,14,14,0) 100%)}

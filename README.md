@@ -392,27 +392,27 @@ descriptions). The mission paragraph is close to verbatim from Notion.
   made the blend fragile), no transform, no `data-px`. Off under reduced motion. Walls sit flush (`gap:0`); the
   spacing in the middle comes from the composites' own margins. Single column under 720px.
 
-## Gallery carousel (2026-10-03)
+## Gallery (six-column grid)
 
-Three rows that auto-scroll, the middle one against the other two. Each `.mq__track` holds its
-images **twice** and animates to `translateX(calc(-50% - gap/2))`, which lands exactly on the start
-of the second copy — that is what makes the loop seamless. Change the gap and that calc must follow.
-Hover pauses; `prefers-reduced-motion` turns each row into a plain horizontal scroller.
-Rows fade into the page at the left and right edges (overlay gradients, not a mask).
+The carousel built on 2026-10-03 was reverted the same day: mixing ~40 DDX conference photographs
+into this section diluted it, and the point of the section is Sebastian's creative design work, not
+DDX documentation. **Keep DDX photography in the DDX section (`.ddxshots`), not here.** The carousel
+markup, CSS and the 74 re-encoded images in `assets/img/mq/` are recoverable with
+`git checkout fb5b4e3 -- assets/img/mq` if a carousel is ever wanted again — but with creative work only.
 
-- **74 images** in `assets/img/mq/`: the 36 creative-work tiles plus 38 DDX conference photographs,
-  interleaved so each row mixes both. All re-encoded to **480px tall, JPEG q62** — 6.5MB for the set,
-  avg 85KB. `website-1.gif` is left animated and is 1.8MB of that total. Regenerate with
-  `sips --resampleHeight 480` then `sips -s format jpeg -s formatOptions 62`, and **verify the output
-  dimensions** — sips silently skipped files in an earlier batch.
-- DDX photos come from `ddx-report-sandiego/assets/img/photos` and `ddx-report-miami/assets/img/photos`.
-  Four are deliberately excluded as stage shots of SG: `DSC09584`, `DSC09719`, `DSC6586`, `DSC6606`.
-  The 20 `carousel/DDX26-*-Recap-*.jpg` cards are social graphics with text and were left out.
-- The six-column grid is gone, and with it the column parallax, the `data-pxp` amplitudes and the
-  bleed/clip that kept its edges straight. `[data-px]{transform:...}` is still needed by the other
-  parallax layers. The `.gallery__col` loop left in the script is now an empty NodeList.
-- The Drive portfolio folder cannot be bulk-pulled: it is shared to lena@ only, so a plain download
-  returns a Google sign-in page, and the connector returns base64 through context (files are 1–76MB).
+- **Six columns, 36 tiles.** Every column carries the SAME multiset of aspect ratios
+  (`4/3, 3/4, 1/1, 16/9, 4/5, 3/2`) rotated by its index, so all six columns are exactly the same
+  height and the band cannot end ragged. Tiles per column must stay equal and the ratio multiset
+  identical. To move an image to a different shape, **exchange two images between positions** —
+  never change one tile's ratio.
+- Breakpoints use divisors of 6: 6 columns ≥1280px, 3 columns ≤1279, 2 columns ≤860.
+- Clean top and bottom edge: at ≥1280 the grid is `overflow:hidden` and the columns carry
+  `margin-block:-105px`, so they bleed past the band and it clips them straight. Column parallax is
+  therefore in PIXELS (`data-pxp`, 80/-65/95/-75/88/-58) — every amplitude must stay under that 105px
+  bleed or a column pulls a gap into the band. The band also fades out at top and bottom.
+- Caption under the heading: `.gallery__note`. Tiles are decorative (`alt=""`).
+- 18 images came from the sebastiangier.com asset set (own material), in `assets/img/work-*`.
+  Deliberately absent: four stage shots of SG and the "Quantified Decarbonization Plan" mockup.
 
 ## Scroll velocity stretch + layered parallax (2026-09-13, perf-fixed same day)
 
