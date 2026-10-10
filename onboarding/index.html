@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=1">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=2">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -33,7 +33,7 @@
   </div>
   <div class="wrap">
     <div class="eyebrow" data-rv>Welcome aboard</div>
-    <h1 data-rv><span id="greet"></span>You're joining the company behind <span class="accent">DDX</span>.</h1>
+    <h1 data-rv><span id="greet"></span><span id="lead1">You're</span> joining the company behind <span class="accent">DDX</span>.</h1>
     <p class="lead" data-rv>We bring the people shaping digital experience into one room &mdash; seven cities a year.
       You're now part of the team that makes that happen. A few details and you're in.</p>
     <div class="hero__meta" data-rv>
@@ -168,6 +168,7 @@
   if (name) {
     name = name.replace(/[<>&"']/g, '');
     document.getElementById('greet').textContent = name + ', ';
+    document.getElementById('lead1').textContent = "you're";   // mid-sentence after the name
   }
 
   /* ---------- which form ---------- */
