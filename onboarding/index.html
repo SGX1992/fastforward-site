@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=11">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=12">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -250,7 +250,6 @@
   var done  = document.getElementById('done');
   var err   = document.getElementById('err');
   var btn   = document.getElementById('submit');
-  var which = document.getElementById('which');
   var bStd  = document.getElementById('path-standard');
   var bFull = document.getElementById('path-full');
   var kind  = 'standard';
@@ -262,7 +261,6 @@
     bFull.classList.toggle('is-on', k === 'full');
     bStd.setAttribute('aria-pressed', k === 'standard');
     bFull.setAttribute('aria-pressed', k === 'full');
-    which.textContent = k === 'full' ? 'Full' : 'Standard';
   }
   setKind((qs.get('full') === '1' || qs.get('form') === 'full') ? 'full' : 'standard');
   bStd.addEventListener('click', function(){ setKind('standard'); });
