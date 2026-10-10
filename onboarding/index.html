@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=12">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=13">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -362,8 +362,16 @@
         done.scrollIntoView({block:'center', behavior:'smooth'});
       });
     }).catch(function(e){
-      fail((e && e.message ? e.message : 'Something went wrong.') +
-           ' You can also email office@fastforward.global.');
+      var m = e && e.message ? e.message : '';
+      // the backend is deployed but still waiting on its Notion key — say something
+      // useful rather than showing a stranger a raw failure
+      if (/not configured/i.test(m) || /Failed to fetch/i.test(m)) {
+        return fail('We are still finishing the last bit of setup on our side — sorry about that. ' +
+                    'Please email your details to office@fastforward.global and we will take it from ' +
+                    'there, or try again a little later. Nothing you typed has been lost.');
+      }
+      fail(m ? m + ' You can also email office@fastforward.global.'
+             : 'Something went wrong. Please email office@fastforward.global.');
     });
   });
 
