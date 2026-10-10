@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=9">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=11">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -102,14 +102,118 @@
     </div>
 
     <div class="formwrap" data-rv>
-      <div class="formbar">
-        <span class="formbar__which">Filling in: <b id="which">Standard</b></span>
-        <a class="btn" id="newtab" href="#" target="_blank" rel="noopener">Open in a new tab &nearr;</a>
+    <form class="form" id="form" novalidate>
+      <input type="text" name="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form__group">
+        <div class="form__legend">About you</div>
+        <div class="grid">
+      <div class="f">
+        <label for="Name">Full name <i>*</i></label>
+        <input id="Name" name="Name" type="text" required autocomplete="name">
       </div>
-      <div class="formcard" id="formcard"></div>
+      <div class="f">
+        <label for="Email">Email <i>*</i></label>
+        <input id="Email" name="Email" type="email" required autocomplete="email">
+      </div>
+      <div class="f">
+        <label for="Phone">Phone <i>*</i></label>
+        <input id="Phone" name="Phone" type="tel" required autocomplete="tel">
+      </div>
+      <div class="f">
+        <label for="Address (1)">Address <i>*</i></label><small>Where you are based</small>
+        <input id="Address (1)" name="Address (1)" type="text" required autocomplete="street-address">
+      </div>
+      <div class="f">
+        <label for="Role">Role</label><small>What we should call your role</small>
+        <input id="Role" name="Role" type="text">
+      </div>
+      <div class="f">
+        <label for="Picture">Photo <i>*</i></label><small>A clear headshot — we use it in the team directory</small>
+        <div class="file"><input id="Picture" name="Picture" type="file" accept="image/*"><span class="file__btn">Choose file</span><span class="file__name">No file chosen</span></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="form__group">
+        <div class="form__legend">What you are great at</div>
+        <div class="chips">
+          <label class="chip"><input type="checkbox" name="cap" value="Project Management"><span>Project Management</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="User Experience (UX)"><span>User Experience (UX)</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="User Interface Design (UI)"><span>User Interface Design (UI)</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="Software Engineering"><span>Software Engineering</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="Branding / Visual Design"><span>Branding / Visual Design</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="Social Media / Marketing"><span>Social Media / Marketing</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="Animations / Motion Design"><span>Animations / Motion Design</span></label>
+          <label class="chip"><input type="checkbox" name="cap" value="Video Editing (After Effects ...)"><span>Video Editing (After Effects ...)</span></label>
+        </div>
+      </div>
+
+      <div class="form__group only-full">
+        <div class="form__legend">Identity</div>
+        <div class="grid">
+      <div class="f only-full">
+        <label for="Nationality">Nationality</label><small>As written in your passport</small>
+        <input id="Nationality" name="Nationality" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="Passport Number">Passport number</label>
+        <input id="Passport Number" name="Passport Number" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="Emirates ID Number">Emirates ID number</label><small>UAE residents only</small>
+        <input id="Emirates ID Number" name="Emirates ID Number" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="Passport Scan">Passport scan</label><small>Photo page — image or PDF</small>
+        <div class="file"><input id="Passport Scan" name="Passport Scan" type="file" accept="image/*,application/pdf"><span class="file__btn">Choose file</span><span class="file__name">No file chosen</span></div>
+      </div>
+      <div class="f only-full">
+        <label for="Emirates ID Scan">Emirates ID scan</label><small>Front and back — UAE residents only</small>
+        <div class="file"><input id="Emirates ID Scan" name="Emirates ID Scan" type="file" accept="image/*,application/pdf"><span class="file__btn">Choose file</span><span class="file__name">No file chosen</span></div>
+      </div>
+        </div>
+      </div>
+
+      <div class="form__group only-full">
+        <div class="form__legend">Payment</div>
+        <div class="grid">
+      <div class="f only-full">
+        <label for="Bank Account Holder">Account holder</label><small>Exactly as your bank has it</small>
+        <input id="Bank Account Holder" name="Bank Account Holder" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="Bank Name">Bank name</label>
+        <input id="Bank Name" name="Bank Name" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="IBAN / Account Number">IBAN or account number</label>
+        <input id="IBAN / Account Number" name="IBAN / Account Number" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="SWIFT / BIC">SWIFT / BIC</label>
+        <input id="SWIFT / BIC" name="SWIFT / BIC" type="text">
+      </div>
+      <div class="f only-full">
+        <label for="Bank Address">Bank address</label><small>Needed for some international transfers</small>
+        <input id="Bank Address" name="Bank Address" type="text">
+      </div>
+        </div>
+      </div>
+
+      <div class="form__foot">
+        <button type="submit" class="btn btn--go" id="submit">Send my details</button>
+        <p class="form__err" id="err" role="alert"></p>
+      </div>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <div class="done__tick" aria-hidden="true">&check;</div>
+      <h3>That's everything — thank you.</h3>
+      <p>Your details are with us. We'll get you set up and come back to you shortly.</p>
+    </div>
     </div>
 
-  </div>
 </section>
 
 </main>
@@ -140,43 +244,130 @@
   var qs     = new URLSearchParams(location.search);
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- which form ---------- */
-  var card  = document.getElementById('formcard');
+  /* ---------- which path ---------- */
+  var ENDPOINT = 'https://ff-onboarding-api.netlify.app/onboard';
+  var form  = document.getElementById('form');
+  var done  = document.getElementById('done');
+  var err   = document.getElementById('err');
+  var btn   = document.getElementById('submit');
   var which = document.getElementById('which');
-  var newtab = document.getElementById('newtab');
   var bStd  = document.getElementById('path-standard');
   var bFull = document.getElementById('path-full');
+  var kind  = 'standard';
 
-  function render(kind){
-    var url = FORMS[kind];
-    bStd.classList.toggle('is-on', kind === 'standard');
-    bFull.classList.toggle('is-on', kind === 'full');
-    bStd.setAttribute('aria-pressed', kind === 'standard');
-    bFull.setAttribute('aria-pressed', kind === 'full');
-    which.textContent = kind === 'full' ? 'Full' : 'Standard';
+  function setKind(k){
+    kind = k;
+    document.body.classList.toggle('is-full', k === 'full');
+    bStd.classList.toggle('is-on', k === 'standard');
+    bFull.classList.toggle('is-on', k === 'full');
+    bStd.setAttribute('aria-pressed', k === 'standard');
+    bFull.setAttribute('aria-pressed', k === 'full');
+    which.textContent = k === 'full' ? 'Full' : 'Standard';
+  }
+  setKind((qs.get('full') === '1' || qs.get('form') === 'full') ? 'full' : 'standard');
+  bStd.addEventListener('click', function(){ setKind('standard'); });
+  bFull.addEventListener('click', function(){ setKind('full'); });
 
-    if (!url) {
-      newtab.style.display = 'none';
-      card.innerHTML = '<div class="formcard__empty"><div>This form is not connected yet.<br>' +
-        'Paste the Notion share link into <code>FORMS.' + kind + '</code> in this page.</div></div>';
-      return;
-    }
-    newtab.style.display = '';
-    newtab.href = url;
-    // rebuild the iframe so switching paths always reloads a clean form
-    card.innerHTML = '';
-    var f = document.createElement('iframe');
-    f.src = url;
-    f.title = (kind === 'full' ? 'Full' : 'Standard') + ' onboarding form';
-    f.loading = 'lazy';
-    f.setAttribute('allow', 'clipboard-write');
-    card.appendChild(f);
+  /* show the chosen filename */
+  [].forEach.call(document.querySelectorAll('.file input'), function(inp){
+    inp.addEventListener('change', function(){
+      var n = inp.files && inp.files[0] ? inp.files[0].name : 'No file chosen';
+      inp.parentNode.querySelector('.file__name').textContent = n;
+    });
+  });
+
+  /* ---------- files: shrink images before sending ---------- */
+  function readAsBase64(blob){
+    return new Promise(function(res, rej){
+      var r = new FileReader();
+      r.onload = function(){ res(String(r.result).split(',')[1]); };
+      r.onerror = rej;
+      r.readAsDataURL(blob);
+    });
+  }
+  function shrink(file){
+    if (!/^image\//.test(file.type)) return readAsBase64(file).then(function(d){
+      return {name:file.name, type:file.type || 'application/octet-stream', data:d};
+    });
+    return new Promise(function(res, rej){
+      var img = new Image(), url = URL.createObjectURL(file);
+      img.onload = function(){
+        var max = 1600, w = img.width, h = img.height;
+        if (w > max || h > max) { var r = Math.min(max/w, max/h); w = Math.round(w*r); h = Math.round(h*r); }
+        var c = document.createElement('canvas'); c.width = w; c.height = h;
+        c.getContext('2d').drawImage(img, 0, 0, w, h);
+        URL.revokeObjectURL(url);
+        c.toBlob(function(blob){
+          if (!blob) return rej(new Error('could not read that image'));
+          readAsBase64(blob).then(function(d){
+            res({name: file.name.replace(/\.[^.]+$/, '') + '.jpg', type:'image/jpeg', data:d});
+          }, rej);
+        }, 'image/jpeg', 0.82);
+      };
+      img.onerror = function(){ URL.revokeObjectURL(url); rej(new Error('could not read that image')); };
+      img.src = url;
+    });
   }
 
-  var start = (qs.get('full') === '1' || qs.get('form') === 'full') ? 'full' : 'standard';
-  render(start);
-  bStd.addEventListener('click', function(){ render('standard'); });
-  bFull.addEventListener('click', function(){ render('full'); });
+  function fail(msg, el){
+    err.textContent = msg;
+    btn.disabled = false; btn.textContent = 'Send my details';
+    if (el) { el.focus(); el.scrollIntoView({block:'center', behavior:'smooth'}); }
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    err.textContent = '';
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    var fields = {}, missing = null;
+    [].forEach.call(form.querySelectorAll('input[type=text],input[type=email],input[type=tel]'), function(inp){
+      if (inp.name === 'hp') return;
+      if (inp.closest('.only-full') && kind !== 'full') return;
+      var v = inp.value.trim();
+      if (!v && inp.required && !missing) missing = inp;
+      if (v) fields[inp.name] = v;
+    });
+    if (missing) return fail('Please fill in ' + (missing.previousElementSibling ? missing.closest('.f').querySelector('label').textContent.replace('*','').trim().toLowerCase() : 'every required field') + '.', missing);
+    if (fields['Email'] && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(fields['Email'])) {
+      return fail('That email address does not look right.', form.querySelector('#Email'));
+    }
+
+    var caps = [].map.call(form.querySelectorAll('input[name=cap]:checked'), function(c){ return c.value; });
+
+    var jobs = [];
+    [].forEach.call(form.querySelectorAll('.file input'), function(inp){
+      if (inp.closest('.only-full') && kind !== 'full') return;
+      var f = inp.files && inp.files[0];
+      if (!f) return;
+      jobs.push(shrink(f).then(function(out){ out.prop = inp.name; return out; }));
+    });
+
+    Promise.all(jobs).then(function(files){
+      var total = files.reduce(function(n, f){ return n + f.data.length * 0.75; }, 0);
+      if (total > 4000000) throw new Error('Those files add up to more than 4 MB. Please send smaller ones.');
+      return fetch(ENDPOINT, {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify({
+          onboarding: kind,
+          fields: fields,
+          capabilities: caps,
+          files: files,
+          hp: document.getElementById('hp').value
+        })
+      });
+    }).then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(j){
+        if (!r.ok || !j.ok) throw new Error(j.error || 'We could not save that just now.');
+        form.hidden = true; done.hidden = false;
+        done.scrollIntoView({block:'center', behavior:'smooth'});
+      });
+    }).catch(function(e){
+      fail((e && e.message ? e.message : 'Something went wrong.') +
+           ' You can also email office@fastforward.global.');
+    });
+  });
 
   /* ---------- chrome ---------- */
   document.getElementById('yr').textContent = new Date().getFullYear();

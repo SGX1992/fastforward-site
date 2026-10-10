@@ -210,3 +210,85 @@ p{margin:0}
   .hero__bg img:nth-child(1){opacity:1}
   html{scroll-behavior:auto}
 }
+
+/* ============================================================
+   THE FORM — native fields posting to the intake function.
+   Full-only groups are revealed by `body.is-full`, set by the path picker.
+   ============================================================ */
+.only-full{display:none}
+body.is-full .only-full{display:block}
+body.is-full .grid .only-full{display:flex}
+
+.form{margin:0}
+#hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none}
+.form__group{
+  padding:clamp(22px,3vw,34px);border:1px solid var(--line-soft);border-radius:18px;
+  background:var(--bg-card);margin-bottom:clamp(14px,2vw,20px);
+}
+.form__legend{
+  font-family:var(--label);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:clamp(18px,2.4vw,26px);
+}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,22px)}
+@media(max-width:720px){.grid{grid-template-columns:1fr}}
+.f{display:flex;flex-direction:column;min-width:0}
+.f label{
+  font-family:var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-mid);margin-bottom:9px;
+}
+.f label i{color:var(--accent);font-style:normal}
+.f small{
+  display:block;margin:-4px 0 9px;font-size:.8rem;color:var(--ink-low);
+  letter-spacing:0;text-transform:none;line-height:1.5;
+}
+.f input[type=text],.f input[type=email],.f input[type=tel]{
+  font:inherit;font-size:.98rem;color:var(--ink);background:var(--bg);width:100%;
+  border:1px solid var(--line);border-radius:10px;padding:13px 15px;
+  transition:border-color .25s,background .25s;
+}
+.f input:focus{outline:none;border-color:var(--accent);background:#101012}
+.f input::placeholder{color:var(--ink-low)}
+
+/* file input dressed as a button */
+.file{position:relative;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.file input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer}
+.file__btn{
+  font-family:var(--label);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  border:1px solid var(--line);border-radius:999px;padding:11px 18px;color:var(--ink);
+  transition:border-color .25s,color .25s;
+}
+.file input:focus + .file__btn,.file:hover .file__btn{border-color:var(--accent);color:var(--accent)}
+.file__name{font-size:.86rem;color:var(--ink-low);min-width:0;overflow-wrap:anywhere}
+
+/* capability chips */
+.chips{display:flex;flex-wrap:wrap;gap:9px}
+.chip{position:relative;cursor:pointer}
+.chip input{position:absolute;opacity:0;width:0;height:0}
+.chip span{
+  display:inline-block;font-family:var(--label);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--ink-mid);border:1px solid var(--line);
+  border-radius:999px;padding:10px 15px;transition:border-color .25s,color .25s,background .25s;
+}
+.chip:hover span{border-color:rgba(0,255,215,.4);color:var(--ink)}
+.chip input:checked + span{border-color:var(--accent);color:var(--accent);background:rgba(0,255,215,.07)}
+.chip input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+
+.form__foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px;margin-top:clamp(6px,1vw,10px)}
+.btn--go{
+  background:var(--accent);border-color:var(--accent);color:var(--on-accent);
+  padding:15px 30px;font-size:11.5px;
+}
+.btn--go:hover{background:#fff;border-color:#fff;color:var(--on-accent)}
+.btn--go:disabled{opacity:.55;cursor:default}
+.form__err{color:#ff8b7a;font-size:.9rem;line-height:1.55;margin:0;max-width:52ch}
+
+/* thank-you state */
+.done{
+  padding:clamp(34px,5vw,56px);border:1px solid rgba(0,255,215,.3);border-radius:18px;
+  background:rgba(0,255,215,.05);text-align:center;
+}
+.done__tick{
+  width:52px;height:52px;margin:0 auto 20px;border-radius:50%;display:grid;place-items:center;
+  background:var(--accent);color:var(--on-accent);font-size:26px;line-height:1;
+}
+.done p{margin-top:12px;color:var(--ink-mid);max-width:46ch;margin-inline:auto}
