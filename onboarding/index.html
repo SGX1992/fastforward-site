@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=2">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=3">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -33,9 +33,8 @@
   </div>
   <div class="wrap">
     <div class="eyebrow" data-rv>Welcome aboard</div>
-    <h1 data-rv><span id="greet"></span><span id="lead1">You're</span> joining the company behind <span class="accent">DDX</span>.</h1>
-    <p class="lead" data-rv>We bring the people shaping digital experience into one room &mdash; seven cities a year.
-      You're now part of the team that makes that happen. A few details and you're in.</p>
+    <h1 data-rv>Welcome to <span class="accent">FastForward</span>.</h1>
+    <p class="lead" data-rv>A few details and you're in.</p>
     <div class="hero__meta" data-rv>
       <span><b>2&ndash;10 min</b> to complete</span>
       <span>Goes straight to our <b>private team database</b></span>
@@ -47,20 +46,13 @@
 <!-- ============================ WHAT YOU'RE JOINING ============================ -->
 <section class="section">
   <div class="wrap">
-    <div class="eyebrow" data-rv>What you're joining</div>
-    <h2 data-rv>Not an agency. A think tank with a conference attached.</h2>
-    <p class="lead" data-rv>FastForward Global is the company behind DDX &mdash; a global think tank on the future of
-      digital experience. We convene leaders in Tokyo, Dubai, Munich, London, Miami, New York and San Diego, and we turn
-      what gets said there into work that ships.</p>
-
+    <div class="eyebrow" data-rv>The company behind DDX</div>
     <div class="metrics" data-rv>
       <div class="metric"><b>7</b><span>Cities on the DDX map</span></div>
       <div class="metric"><b>3,000+</b><span>Leaders convened</span></div>
       <div class="metric"><b>100%</b><span>Sold-out editions</span></div>
       <div class="metric"><b>10+</b><span>Years exploring the future</span></div>
     </div>
-
-    <p class="lead" data-rv style="margin-top:clamp(34px,5vw,56px)">People from these companies keep coming back.</p>
     <div class="logos" data-rv>
       <img src="../assets/img/ddx-companies-a.png" alt="" loading="lazy" decoding="async">
       <img src="../assets/img/ddx-companies-b.png" alt="" loading="lazy" decoding="async">
@@ -72,7 +64,7 @@
 <section class="section">
   <div class="wrap">
     <div class="eyebrow" data-rv>How it goes</div>
-    <h2 data-rv>Four steps, and most of them are ours.</h2>
+    <h2 data-rv>How it goes.</h2>
     <div class="steps">
       <article class="step" data-rv><b>Step 01</b><h3>You tell us who you are</h3>
         <p>The form below. Your details, a photo, and what you're great at.</p></article>
@@ -91,8 +83,6 @@
   <div class="wrap">
     <div class="eyebrow" data-rv>Your details</div>
     <h2 data-rv>Pick the one we asked you for.</h2>
-    <p class="lead" data-rv>Most people need the short one. If we told you to complete the full version, use that &mdash;
-      it adds the documents we need to contract and pay you.</p>
 
     <div class="paths">
       <button type="button" class="path is-on" id="path-standard" data-rv aria-pressed="true">
@@ -162,14 +152,6 @@
 
   var qs     = new URLSearchParams(location.search);
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- greet them by name: /onboarding/?n=Sakura ---------- */
-  var name = (qs.get('n') || qs.get('name') || '').trim().slice(0, 40);
-  if (name) {
-    name = name.replace(/[<>&"']/g, '');
-    document.getElementById('greet').textContent = name + ', ';
-    document.getElementById('lead1').textContent = "you're";   // mid-sentence after the name
-  }
 
   /* ---------- which form ---------- */
   var card  = document.getElementById('formcard');
