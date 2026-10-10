@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# hidden onboarding page — shared by link only
+Disallow: /onboarding/
