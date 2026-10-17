@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=13">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=14">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -246,6 +246,10 @@
 
   /* ---------- which path ---------- */
   var ENDPOINT = 'https://ff-onboarding-api.netlify.app/onboard';
+  /* Stopgap: our own form cannot reach Notion until the sync is wired, so show the
+     working Notion form instead. Flip this to false to go back to the native form. */
+  var USE_NOTION_EMBED = true;
+  var NOTION_FORM = 'https://sgx.notion.site/2d59967f86f38084b7caf26614f6c052';
   var form  = document.getElementById('form');
   var done  = document.getElementById('done');
   var err   = document.getElementById('err');
@@ -254,6 +258,17 @@
   var bFull = document.getElementById('path-full');
   var kind  = 'standard';
 
+  if (USE_NOTION_EMBED) {
+    var wrap = document.querySelector('.formwrap');
+    form.hidden = true;
+    var box = document.createElement('div');
+    box.className = 'embed';
+    box.innerHTML = '<iframe src="' + NOTION_FORM + '" title="Onboarding form" loading="lazy"></iframe>';
+    var note = document.createElement('p');
+    note.className = 'embed__note'; note.id = 'embednote';
+    wrap.appendChild(box); wrap.appendChild(note);
+  }
+
   function setKind(k){
     kind = k;
     document.body.classList.toggle('is-full', k === 'full');
@@ -261,6 +276,12 @@
     bFull.classList.toggle('is-on', k === 'full');
     bStd.setAttribute('aria-pressed', k === 'standard');
     bFull.setAttribute('aria-pressed', k === 'full');
+    var en = document.getElementById('embednote');
+    if (en) en.innerHTML = k === 'full'
+      ? 'The form above covers your details. For the full version we also need your passport, '
+        + 'Emirates ID and bank details — please send those to '
+        + '<a href="mailto:office@fastforward.global">office@fastforward.global</a> and we will take it from there.'
+      : '';
   }
   setKind((qs.get('full') === '1' || qs.get('form') === 'full') ? 'full' : 'standard');
   bStd.addEventListener('click', function(){ setKind('standard'); });
