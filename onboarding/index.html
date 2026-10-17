@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=14">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=15">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -102,7 +102,7 @@
     </div>
 
     <div class="formwrap" data-rv>
-    <form class="form" id="form" novalidate>
+    <form class="form" id="onboardform" novalidate>
       <input type="text" name="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <div class="form__group">
@@ -250,7 +250,7 @@
      working Notion form instead. Flip this to false to go back to the native form. */
   var USE_NOTION_EMBED = true;
   var NOTION_FORM = 'https://sgx.notion.site/2d59967f86f38084b7caf26614f6c052';
-  var form  = document.getElementById('form');
+  var form  = document.getElementById('onboardform');
   var done  = document.getElementById('done');
   var err   = document.getElementById('err');
   var btn   = document.getElementById('submit');
