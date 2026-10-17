@@ -11,7 +11,7 @@
 <link rel="icon" href="../assets/img/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
-<link rel="stylesheet" href="../assets/css/onboarding.css?v=15">
+<link rel="stylesheet" href="../assets/css/onboarding.css?v=16">
 <noscript><style>[data-rv]{opacity:1 !important;transform:none !important}</style></noscript>
 </head>
 <body>
@@ -248,7 +248,7 @@
   var ENDPOINT = 'https://ff-onboarding-api.netlify.app/onboard';
   /* Stopgap: our own form cannot reach Notion until the sync is wired, so show the
      working Notion form instead. Flip this to false to go back to the native form. */
-  var USE_NOTION_EMBED = true;
+  var USE_NOTION_EMBED = false;   // our own form now syncs to Notion via the intake service
   var NOTION_FORM = 'https://sgx.notion.site/2d59967f86f38084b7caf26614f6c052';
   var form  = document.getElementById('onboardform');
   var done  = document.getElementById('done');
