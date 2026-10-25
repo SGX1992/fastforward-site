@@ -1265,3 +1265,31 @@ h2.is-split.is-in .w,.stance__lead.is-split.is-in .w{opacity:1;transform:none}
 }
 .gallery__grid::before{top:0;background:linear-gradient(180deg,rgba(14,14,14,1) 0%,rgba(14,14,14,.86) 38%,rgba(14,14,14,0) 100%)}
 .gallery__grid::after{bottom:0;background:linear-gradient(0deg,rgba(14,14,14,1) 0%,rgba(14,14,14,.86) 38%,rgba(14,14,14,0) 100%)}
+
+
+/* ============================================================
+   CURSOR — a dot that sits exactly on the pointer and a ring that
+   trails it. Fine pointers only; `has-cur` is set by the script, so
+   the native cursor only disappears once the custom one is live.
+   ============================================================ */
+html.has-cur, html.has-cur *{cursor:none}
+.cur{position:fixed;inset:0;z-index:70;pointer-events:none;opacity:0;transition:opacity .35s var(--ease)}
+.cur.is-on{opacity:1}
+.cur__dot,.cur__ring{position:fixed;top:0;left:0;border-radius:50%;display:block}
+.cur__dot{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--accent)}
+.cur__ring{
+  width:34px;height:34px;margin:-17px 0 0 -17px;
+  border:1px solid rgba(255,255,255,.28);
+  transition:width .38s var(--ease),height .38s var(--ease),margin .38s var(--ease),
+             border-color .38s var(--ease),background .38s var(--ease);
+}
+/* over something you can click */
+.cur.is-link .cur__ring{width:62px;height:62px;margin:-31px 0 0 -31px;border-color:var(--accent);background:rgba(0,255,215,.06)}
+/* over gallery imagery — opens up, but stays quiet since tiles are not clickable */
+.cur.is-wide .cur__ring{width:82px;height:82px;margin:-41px 0 0 -41px;border-color:rgba(255,255,255,.5)}
+/* the contact block and footer are white */
+.cur.on-light .cur__dot{background:var(--on-accent)}
+.cur.on-light .cur__ring{border-color:rgba(6,17,15,.28)}
+.cur.on-light.is-link .cur__ring{border-color:var(--on-accent);background:rgba(6,17,15,.05)}
+@media (hover:none),(pointer:coarse){html.has-cur,html.has-cur *{cursor:auto}.cur{display:none}}
+@media(prefers-reduced-motion:reduce){html.has-cur,html.has-cur *{cursor:auto}.cur{display:none}}

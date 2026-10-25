@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <meta name="theme-color" content="#0e0e0e">
-<link rel="stylesheet" href="assets/css/style.css?v=74">
+<link rel="stylesheet" href="assets/css/style.css?v=75">
 <noscript><style>
   /* without JS nothing can add .is-in — so nothing may start hidden */
   .tile{clip-path:none !important}.tile img,.tile video{opacity:1 !important;transform:none !important}
@@ -796,6 +796,45 @@
       });
     }, {rootMargin:'0px 0px -8% 0px', threshold:0.04});
     Array.prototype.forEach.call(items, function(el){ io.observe(el); });
+  }
+
+  /* ---------- cursor: dot on the pointer, ring trailing behind ----------
+     Ported from the SANDBOX site, rebuilt in plain JS so it costs nothing.
+     The native cursor is only hidden once this is actually running, so a
+     failure here can never leave the page without one. ------------------ */
+  if (fine && !reduce) {
+    var cur = document.createElement('div');
+    cur.className = 'cur';
+    cur.setAttribute('aria-hidden', 'true');
+    cur.innerHTML = '<i class="cur__dot"></i><i class="cur__ring"></i>';
+    document.body.appendChild(cur);
+    document.documentElement.classList.add('has-cur');
+
+    var cDot = cur.firstChild, cRing = cur.lastChild;
+    var tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+    var rx = tx, ry = ty, running = false;
+
+    function curFrame(){
+      rx += (tx - rx) * 0.16;            // the lag is the whole effect
+      ry += (ty - ry) * 0.16;
+      cDot.style.transform  = 'translate3d(' + tx + 'px,' + ty + 'px,0)';
+      cRing.style.transform = 'translate3d(' + rx.toFixed(2) + 'px,' + ry.toFixed(2) + 'px,0)';
+      requestAnimationFrame(curFrame);
+    }
+
+    document.addEventListener('pointermove', function(e){
+      if (e.pointerType === 'touch') return;
+      tx = e.clientX; ty = e.clientY;
+      if (!running) { running = true; rx = tx; ry = ty; cur.classList.add('is-on'); curFrame(); }
+      var t = e.target;
+      if (!t || !t.closest) return;
+      cur.classList.toggle('is-link', !!t.closest('a, button, .ed, [data-cursor="link"]'));
+      cur.classList.toggle('is-wide', !!t.closest('.tile'));
+      cur.classList.toggle('on-light', !!t.closest('.contact, .foot'));
+    }, {passive:true});
+
+    document.addEventListener('pointerleave', function(){ cur.classList.remove('is-on'); });
+    window.addEventListener('blur', function(){ cur.classList.remove('is-on'); });
   }
 })();
 
